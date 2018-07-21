@@ -49,8 +49,8 @@ $('#video').YTPlayer({
 	mute: mute,
 	fitToBackground: true
 });
-var latitude = 52.7342313,
-	longitude = 23.3438728,
+var latitude = 52.5693876,
+	longitude = 23.8007901,
 	map_zoom = 10;
 var is_internetExplorer11 = navigator['userAgent']['toLowerCase']()['indexOf']('trident') > -1;
 var marker_url = (is_internetExplorer11) ? 'images/icon-location.png' : 'images/icon-location.png';
