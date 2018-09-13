@@ -1,0 +1,150 @@
+body {
+  margin-bottom: 60px;
+}
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+/* .navbar-brand {
+  color: #ffbe00 !important;
+  font-weight: bold;
+  padding: 0;
+  margin-bottom: -6px;
+}
+.navbar-brand:hover {
+  color: #fff !important;
+}
+.navbar-brand img {
+  height: 32px;
+  position: relative;
+  top: -4px;
+  width: 108px;
+}
+.navbar li {
+  margin: 0 20px;
+}
+
+footer {
+    background-color: #888;
+    bottom: 0;
+	color: rgba(0, 0, 0, 0.9);
+    height: 60px;
+    line-height: 60px;
+	position: absolute;
+    text-align: center;
+    width: 100%;
+} */
+
+#start {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	z-index: 5;
+	background: #000;
+	color: #4fe084;
+}
+
+svg * {
+	fill: none;
+	stroke: currentColor;
+}
+
+#loader {
+	width: 500px;
+	margin-top: 30px;
+	stroke: #f9f9f9;
+	stroke-width: 3;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	stroke-miterlimit: 10;
+	cursor: pointer;
+	transition: 1s;
+}
+#loader:hover {
+	width: 600px;
+	color: #2A9FD6;
+}
+
+@media (max-width: 767px) {
+	#loader { width: 100%; max-height: 300px; }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+	#loader { width: 100%; max-height: 300px; }
+}
+
+@media (max-width: 480px) {
+	#loader { width: 100%; max-height: 260px; }
+}
+
+#video {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	z-index: 1;
+	display: none;
+}
+
+#map {
+	position: fixed !important;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	z-index: 4;
+	display: none;
+}
+
+#fairytale-page {
+	z-index: 3;
+	position: fixed;
+	top: 0;
+	left: 3em;
+	height: 100%;
+	width: 82%;
+	font-size: 3em;
+	background: #0000006e;
+	color: #fff;
+	padding: 0.5em;
+}
+
+#video-layer-block {
+    z-index: 2;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+}
+
+#sound {
+	z-index: 4;
+	position: fixed;
+	bottom: 1em;
+	left: 10em;
+	opacity: 0.5;
+	width: 80%;
+	height: 110px;
+	transition: 1s;
+}
+#sound:hover {
+	opacity: 1;
+}
+
+#btn-map {
+	z-index: 3;
+	position: fixed;
+	bottom: 9em;
+	left: 45%;
+	display: none;
+}
+
+#fullscreen-in-btn, #fullscreen-out-btn {
+	z-index: 4;
+	position: fixed;
+	top: 1em;
+	right: 1em;
+	display: none;
+}
+
+a[href^="https://maps.google.com/maps"]{display:none!important}.gmnoprint a,.gmnoprint span,.gm-style-cc{display:none}.gmnoprint div{background:none!important}

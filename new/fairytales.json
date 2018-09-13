@@ -1,0 +1,15 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 23.93218827226301, 52.68400095664496 ]
+      },
+      "type": "Feature",
+      "properties": {
+        "name": "yaga"
+      }
+    }
+  ]
+}
