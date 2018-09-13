@@ -118,9 +118,9 @@ svg * {
 	z-index: 3;
 	position: fixed;
 	top: 0;
-	left: 10rem;
+	left: 15%;
 	height: 100%;
-	width: 65rem;
+	width: 70%;
 	font-size: 3rem;
 	background: #0000006e;
 	color: #fff;
@@ -138,9 +138,9 @@ svg * {
 	z-index: 4;
 	position: fixed;
 	bottom: 1rem;
-	left: 10rem;
+	left: 15%;
 	opacity: 0.5;
-	width: 65rem;
+	width: 70%;
 	height: 110px;
 	transition: 1s;
 }
