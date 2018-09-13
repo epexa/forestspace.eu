@@ -1,4 +1,6 @@
-﻿initHtmlElements([ '#start', '#video', '#map', '#fairytale-page', '#sound', '#btn-map', '#fullscreen-in-btn', '#fullscreen-out-btn' ]);
+﻿initHtmlElements([ '#start', '#video', '#map', '#fairytale-page', '#sound', '#btn-map', '#fullscreen-in-btn', '#fullscreen-out-btn', '#music-toggle-btn' ]);
+
+let soundWidget = SC.Widget('sound');
 
 let player;
 let introVideo = true;
@@ -27,7 +29,7 @@ var onYouTubeIframeAPIReady = () => {
 				if (event.data == YT.PlayerState.ENDED) {
 					if (introVideo) {
 						window.location.hash = 'map';
-						$sound.style.display = 'block';
+						//$sound.style.display = 'block';
 					}
 					else player.playVideo();
 				}
@@ -45,14 +47,19 @@ let loader = new Vivus('start', {
 		loader.play(1, () => {
 			console.log('loader finish');
 		});
-		document.getElementById('loader').addEventListener('click', () => {
+		let $loader = document.getElementById('loader');
+		$loader.addEventListener('click', () => {
 			//loader.reset().play();
 			$start.style.display = 'none';
 			loaded = true;
 			player.playVideo();
 			fullScreen();
 			$fairytalePage.style.display = 'none';
-			$sound.style.display = 'none';
+			//$sound.style.display = 'none';
+			playSound('499380882', true);
+		});
+		$loader.addEventListener('mouseover', () => {
+			soundWidget.play();
 		});
 	}
 });
@@ -123,24 +130,38 @@ const fairytaleText = new Typed('#fairytale-text-output', {
 });
 fairytaleText.stop();
 
-$start.addEventListener('mouseover', () => {
-	SC.Widget('sound').play();
+$musicToggleBtn.addEventListener('click', () => {
+	soundWidget.isPaused((isPaused) => {
+		if ( ! isPaused) {
+			soundWidget.pause();
+			$musicToggleBtn.innerText = 'Вкл. музыку';
+		}
+		else {
+			soundWidget.play();
+			$musicToggleBtn.innerText = 'Выкл. музыку';
+		}
+	});
 });
 
-let soundParams = {
-	//color: '%232A9FD6',
-	auto_play: false,
-	hide_related: true,
-	show_comments: false,
-	show_user: false,
-	show_reposts: false,
-	show_teaser: false,
-	visual: false,
-	show_artwork: false,
-	callback: () => {
-		SC.Widget('sound').play();
-	}
-};
+let playSound = (url, hide, callback) => {
+	soundWidget.load('https://api.soundcloud.com/tracks/' + url + '&color=%232A9FD6', {
+		//color: '%232A9FD6',
+		auto_play: false,
+		hide_related: true,
+		show_comments: false,
+		show_user: false,
+		show_reposts: false,
+		show_teaser: false,
+		visual: false,
+		show_artwork: false,
+		callback: () => {
+			soundWidget.play();
+			if (callback) callback();
+		}
+	});
+	if (hide) $sound.classList.add('invis');
+	else $sound.classList.remove('invis');
+}
 
 window.addEventListener('hashchange', () => {
 	let hash = window.location.hash.substring(1);
@@ -155,15 +176,17 @@ window.addEventListener('hashchange', () => {
 					$fairytalePage.style.display = 'block';
 					loadVideoById = 'UhN744j0jvQ';
 					if (player) player.loadVideoById(loadVideoById);
-					SC.Widget('sound').load('https://api.soundcloud.com/tracks/498936516?secret_token=s-fWkrC&color=%232A9FD6', soundParams);
+					playSound('498936516?secret_token=s-fWkrC', false, () => {
+						if ( ! fairytaleTextTypeStarted) {
+							fairytaleTextTypeStarted = true;
+							setTimeout(() => {
+								fairytaleText.start();
+							}, 1000);
+						}
+						else fairytaleText.reset();
+					});
+					$musicToggleBtn.style.display = 'none';
 					$btnMap.style.display = 'block';
-					if ( ! fairytaleTextTypeStarted) {
-						fairytaleTextTypeStarted = true;
-						setTimeout(() => {
-							fairytaleText.start();
-						}, 1000);
-					}
-					else fairytaleText.reset();
 					initFullscreenInBtn();
 				}; break;
 			}
@@ -176,7 +199,13 @@ window.addEventListener('hashchange', () => {
 					$btnMap.style.display = 'none';
 					if (player) player.stopVideo();
 					initFullscreenInBtn();
-					SC.Widget('sound').load('https://api.soundcloud.com/playlists/602264412%3Fsecret_token%3Ds-7lP7c&color=%232A9FD6', soundParams);
+					soundWidget.bind(SC.Widget.Events.READY, () => {
+						soundWidget.getCurrentSound((sound) => {
+							if (sound.id != 499380882) playSound('499380882', true);
+						});
+					});
+					$musicToggleBtn.style.display = 'block';
+					$musicToggleBtn.innerText = 'Выкл. музыку';
 				}; break;
 			}
 		}

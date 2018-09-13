@@ -1,12 +1,29 @@
-body {
-  margin-bottom: 60px;
+@font-face {
+  font-family: "ColumbinaAltCap";
+  src: url("./fonts/columbinaaltcap.eot"); /* IE9 Compat Modes */
+  src: url("./fonts/columbinaaltcap.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("./fonts/columbinaaltcap.otf") format("opentype"), /* Open Type Font */
+    url("./fonts/columbinaaltcap.ttf") format("truetype"), /* Safari, Android, iOS */
+    url("./fonts/columbinaaltcap.woff") format("woff"), /* Modern Browsers */
+    url("./fonts/columbinaaltcap.woff2") format("woff2"); /* Modern Browsers */
+  font-weight: normal;
+  font-style: normal;
 }
+
 html {
   position: relative;
   min-height: 100%;
 }
 
-/* .navbar-brand {
+body {
+  font-family: "ColumbinaAltCap" !important;
+}
+
+/* body {
+  margin-bottom: 60px;
+}
+
+.navbar-brand {
   color: #ffbe00 !important;
   font-weight: bold;
   padding: 0;
@@ -101,13 +118,13 @@ svg * {
 	z-index: 3;
 	position: fixed;
 	top: 0;
-	left: 3em;
+	left: 10rem;
 	height: 100%;
-	width: 82%;
-	font-size: 3em;
+	width: 65rem;
+	font-size: 3rem;
 	background: #0000006e;
 	color: #fff;
-	padding: 0.5em;
+	padding: 0.5rem;
 }
 
 #video-layer-block {
@@ -120,31 +137,38 @@ svg * {
 #sound {
 	z-index: 4;
 	position: fixed;
-	bottom: 1em;
-	left: 10em;
+	bottom: 1rem;
+	left: 10rem;
 	opacity: 0.5;
-	width: 80%;
+	width: 65rem;
 	height: 110px;
 	transition: 1s;
 }
 #sound:hover {
 	opacity: 1;
 }
+#sound.invis {
+	opacity: 0;
+}
 
 #btn-map {
 	z-index: 3;
 	position: fixed;
-	bottom: 9em;
+	bottom: 9rem;
 	left: 45%;
 	display: none;
 }
 
-#fullscreen-in-btn, #fullscreen-out-btn {
+#fullscreen-in-btn, #fullscreen-out-btn, #music-toggle-btn {
 	z-index: 4;
 	position: fixed;
-	top: 1em;
-	right: 1em;
+	top: 1rem;
+	right: 1rem;
 	display: none;
+}
+
+#music-toggle-btn {
+	right: 12rem;
 }
 
 a[href^="https://maps.google.com/maps"]{display:none!important}.gmnoprint a,.gmnoprint span,.gm-style-cc{display:none}.gmnoprint div{background:none!important}
