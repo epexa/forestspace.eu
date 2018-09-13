@@ -34,7 +34,7 @@ $(window)['load'](function() {
 })();
 $('header')['backstretch']('images/background4.jpg');
 $(function() {
-	var _0x4e4fx2 = 'Aug 31, 2018 00:00:00';
+	var _0x4e4fx2 = 'Sep 11, 2018 00:00:00';
 	$('.countdown')['countdown']({
 		date: _0x4e4fx2,
 		render: function(_0x4e4fx3) {
