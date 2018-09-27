@@ -1,278 +1,231 @@
-﻿if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i ['test'](navigator['userAgent'])) {
-	$('#video')['css']({
-		"\x64\x69\x73\x70\x6C\x61\x79": 'none'
-	})
-};
-$(window)['load'](function() {
-	$('.loader-icon')['delay'](500)['fadeOut']();
-	$('#page-loader')['delay'](700)['fadeOut']('slow');
-	setTimeout(function() {
-		$('.social-icons')['delay'](1000)['css']({
-			display: 'none'
-		})['fadeIn'](1000);
-		$('.actions')['delay'](1000)['css']({
-			display: 'none'
-		})['fadeIn'](1000);
-		$('hr')['delay'](1000)['css']({
-			display: 'none'
-		})['fadeIn'](1000);
-		$('p')['delay'](1000)['css']({
-			display: 'none'
-		})['fadeIn'](1000);
-		$('.logo img')['delay'](1200)['css']({
-			display: 'none'
-		})['fadeIn'](1200)
-	})
-});
-(function(_0x4e4fx1) {
-	'use strict';
-	window['sr'] = new scrollReveal({
-		reset: true,
-		move: '10px',
-		mobile: false
-	})
-})();
-$('header')['backstretch']('images/background4.jpg');
-$(function() {
-	var _0x4e4fx2 = 'Sep 11, 2018 00:00:00';
-	$('.countdown')['countdown']({
-		date: _0x4e4fx2,
-		render: function(_0x4e4fx3) {
-			$(this['el'])['html']('<div>' + this['leadingZeros'](_0x4e4fx3['days'], 3) + ' <span>days</span></div><div class=\'border_clock\'>' + this['leadingZeros'](_0x4e4fx3['hours'], 2) + ' <span>hours</span></div><div class=\'border_clock\'>' + this['leadingZeros'](_0x4e4fx3['min'], 2) + ' <span>minutes</span></div><div class=\'border_clock\'>' + this['leadingZeros'](_0x4e4fx3['sec'], 2) + ' <span>seconds</span></div>')
+﻿initHtmlElements([ '#start', '#video', '#map', '#fairytale-page', '#sound', '#btn-map', '#fullscreen-in-btn', '#fullscreen-out-btn', '#music-toggle-btn', '#team' ]);
+
+let soundWidget = SC.Widget('sound');
+
+let player;
+let introVideo = true;
+let loaded = false;
+let loadVideoById;
+var onYouTubeIframeAPIReady = () => {
+	player = new YT.Player($video, {
+		events: {
+			onReady: (event) => {
+				if (loadVideoById) player.loadVideoById(loadVideoById);
+				event.target.playVideo();
+				//event.target.setPlaybackQuality('hd1080');
+			},
+			onStateChange: (event) => {
+				if (event.data == YT.PlayerState.PLAYING) {
+					if (event.target.j.videoData.video_id == 'YG25qmmSEHg') introVideo = true; else introVideo = false;
+					if ( ! loaded && introVideo) {
+						loaded = true;
+						player.pauseVideo();
+					}
+					else $video.style.display = 'block';
+				}
+				if (event.data == YT.PlayerState.CUED) {
+					$video.style.display = 'none';
+				}
+				if (event.data == YT.PlayerState.ENDED) {
+					if (introVideo) {
+						window.location.hash = 'map';
+						//$sound.style.display = 'block';
+					}
+					else player.playVideo();
+				}
+			}
 		}
-	})
-});
-var video = $('#video')['data']('video');
-var mute = $('#video')['data']('mute');
-$('#video').YTPlayer({
-	videoId: video,
-	mute: mute,
-	fitToBackground: true
-});
-var latitude = 52.5693876,
-	longitude = 23.8007901,
-	map_zoom = 10;
-var is_internetExplorer11 = navigator['userAgent']['toLowerCase']()['indexOf']('trident') > -1;
-var marker_url = (is_internetExplorer11) ? 'images/icon-location.png' : 'images/icon-location.png';
-var main_color = '#2d313f',
-	saturation_value = -20,
-	brightness_value = 5;
-var style = [{
-	elementType: 'labels',
-	stylers: [{
-		saturation: saturation_value
-	}]
-}, {
-	featureType: 'poi',
-	elementType: 'labels',
-	stylers: [{
-		visibility: 'off'
-	}]
-}, {
-	featureType: 'road.highway',
-	elementType: 'labels',
-	stylers: [{
-		visibility: 'off'
-	}]
-}, {
-	featureType: 'road.local',
-	elementType: 'labels.icon',
-	stylers: [{
-		visibility: 'off'
-	}]
-}, {
-	featureType: 'road.arterial',
-	elementType: 'labels.icon',
-	stylers: [{
-		visibility: 'off'
-	}]
-}, {
-	featureType: 'road',
-	elementType: 'geometry.stroke',
-	stylers: [{
-		visibility: 'off'
-	}]
-}, {
-	featureType: 'transit',
-	elementType: 'geometry.fill',
-	stylers: [{
-		hue: main_color
-	}, {
-		visibility: 'on'
-	}, {
-		lightness: brightness_value
-	}, {
-		saturation: saturation_value
-	}]
-}, {
-	featureType: 'poi',
-	elementType: 'geometry.fill',
-	stylers: [{
-		hue: main_color
-	}, {
-		visibility: 'on'
-	}, {
-		lightness: brightness_value
-	}, {
-		saturation: saturation_value
-	}]
-}, {
-	featureType: 'poi.government',
-	elementType: 'geometry.fill',
-	stylers: [{
-		hue: main_color
-	}, {
-		visibility: 'on'
-	}, {
-		lightness: brightness_value
-	}, {
-		saturation: saturation_value
-	}]
-}, {
-	featureType: 'poi.sport_complex',
-	elementType: 'geometry.fill',
-	stylers: [{
-		hue: main_color
-	}, {
-		visibility: 'on'
-	}, {
-		lightness: brightness_value
-	}, {
-		saturation: saturation_value
-	}]
-}, {
-	featureType: 'poi.attraction',
-	elementType: 'geometry.fill',
-	stylers: [{
-		hue: main_color
-	}, {
-		visibility: 'on'
-	}, {
-		lightness: brightness_value
-	}, {
-		saturation: saturation_value
-	}]
-}, {
-	featureType: 'poi.business',
-	elementType: 'geometry.fill',
-	stylers: [{
-		hue: main_color
-	}, {
-		visibility: 'on'
-	}, {
-		lightness: brightness_value
-	}, {
-		saturation: saturation_value
-	}]
-}, {
-	featureType: 'transit',
-	elementType: 'geometry.fill',
-	stylers: [{
-		hue: main_color
-	}, {
-		visibility: 'on'
-	}, {
-		lightness: brightness_value
-	}, {
-		saturation: saturation_value
-	}]
-}, {
-	featureType: 'transit.station',
-	elementType: 'geometry.fill',
-	stylers: [{
-		hue: main_color
-	}, {
-		visibility: 'on'
-	}, {
-		lightness: brightness_value
-	}, {
-		saturation: saturation_value
-	}]
-}, {
-	featureType: 'landscape',
-	stylers: [{
-		hue: main_color
-	}, {
-		visibility: 'on'
-	}, {
-		lightness: brightness_value
-	}, {
-		saturation: saturation_value
-	}]
-}, {
-	featureType: 'road',
-	elementType: 'geometry.fill',
-	stylers: [{
-		hue: main_color
-	}, {
-		visibility: 'on'
-	}, {
-		lightness: brightness_value
-	}, {
-		saturation: saturation_value
-	}]
-}, {
-	featureType: 'road.highway',
-	elementType: 'geometry.fill',
-	stylers: [{
-		hue: main_color
-	}, {
-		visibility: 'on'
-	}, {
-		lightness: brightness_value
-	}, {
-		saturation: saturation_value
-	}]
-}, {
-	featureType: 'water',
-	elementType: 'geometry',
-	stylers: [{
-		hue: main_color
-	}, {
-		visibility: 'on'
-	}, {
-		lightness: brightness_value
-	}, {
-		saturation: saturation_value
-	}]
-}];
-var map_options = {
-	center: new google['maps'].LatLng(latitude, longitude),
-	zoom: map_zoom,
-	panControl: false,
-	zoomControl: false,
-	mapTypeControl: false,
-	streetViewControl: false,
-	mapTypeId: google['maps']['MapTypeId']['ROADMAP'],
-	scrollwheel: false,
-	styles: style
-};
-var map = new google['maps'].Map(document['getElementById']('google-container'), map_options);
-var marker = new google['maps'].Marker({
-	position: new google['maps'].LatLng(latitude, longitude),
-	map: map,
-	title: 'Brest, Belarus',
-	visible: true,
-	icon: marker_url
-});
-google['maps']['event']['addDomListener'](window, 'resize', function() {
-	var _0x4e4fx18 = map['getCenter']();
-	google['maps']['event']['trigger'](map, 'resize');
-	map['setCenter'](_0x4e4fx18)
+	});
+}
+
+let loader = new Vivus('start', {
+	type: 'oneByOne',
+	file: 'img/logo.svg',
+	//start: 'autostart',
+	//duration: 1000,
+	onReady: () => {
+		loader.play(1, () => {
+			console.log('loader finish');
+		});
+		let $loader = document.getElementById('loader');
+		$loader.addEventListener('click', () => {
+			//loader.reset().play();
+			$start.style.display = 'none';
+			loaded = true;
+			player.playVideo();
+			fullScreen();
+			$fairytalePage.style.display = 'none';
+			//$sound.style.display = 'none';
+			playSound('499380882', true);
+		});
+		$loader.addEventListener('mouseover', () => {
+			soundWidget.play();
+		});
+	}
 });
 
-function CustomZoomControl(_0x4e4fx1a, map) {
-	var _0x4e4fx1b = document['getElementById']('zoom-in'),
-		_0x4e4fx1c = document['getElementById']('zoom-out');
-	_0x4e4fx1a['appendChild'](_0x4e4fx1b);
-	_0x4e4fx1a['appendChild'](_0x4e4fx1c);
-	google['maps']['event']['addDomListener'](_0x4e4fx1b, 'click', function() {
-		map['setZoom'](map['getZoom']() + 1)
-	});
-	google['maps']['event']['addDomListener'](_0x4e4fx1c, 'click', function() {
-		map['setZoom'](map['getZoom']() - 1)
-	})
+let docElm = document.documentElement;
+
+let fullScreen = () => {
+	if (docElm.requestFullscreen) docElm.requestFullscreen();
+	else if (docElm.msRequestFullscreen) {
+		docElm = document.body;
+		docElm.msRequestFullscreen();
+	}
+	else if (docElm.mozRequestFullScreen) docElm.mozRequestFullScreen();
+	else if (docElm.webkitRequestFullScreen) docElm.webkitRequestFullScreen();
+	$fullscreenOutBtn.style.display = 'block';
 }
-var zoomControlDiv = document['createElement']('div');
-var zoomControl = new CustomZoomControl(zoomControlDiv, map);
-map['controls'][google['maps']['ControlPosition']['LEFT_TOP']]['push'](zoomControlDiv)
+
+$fullscreenInBtn.addEventListener('click', () => {
+	$fullscreenInBtn.style.display = 'none';
+	fullScreen();
+});
+
+$fullscreenOutBtn.addEventListener('click', () => {
+	$fullscreenOutBtn.style.display = 'none';
+	if (document.exitFullscreen) document.exitFullscreen();
+	else if (document.msExitFullscreen) document.msExitFullscreen();
+	else if (document.mozCancelFullScreen) document.mozCancelFullScreen();
+	else if (document.webkitCancelFullScreen) document.webkitCancelFullScreen();
+	$fullscreenInBtn.style.display = 'block';
+});
+
+let initFullscreenInBtn = () => {
+	if ( ! document.fullscreenElement && ! document.msFullscreenElement && ! document.mozFullScreen && ! document.webkitIsFullScreen) $fullscreenInBtn.style.display = 'block';
+}
+
+var initMap = () => {
+	const map = new google.maps.Map($map, {
+		center: { lat: 52.68400095664496, lng: 23.93218827226301 },
+		zoom: 16,
+		mapTypeId: 'satellite',
+		mapTypeControl: false,
+		fullscreenControl: false,
+		streetViewControl: false,
+		zoomControl: false
+	});
+	map.data.loadGeoJson('fairytales.json');
+	map.data.setStyle(feature => {
+		return {
+			icon: {
+				url: `img/icon_${feature.getProperty('name')}.png`,
+				scaledSize: new google.maps.Size(64, 64)
+			}
+		};
+	});
+	map.data.addListener('click', event => {
+		const name = event.feature.getProperty('name');
+		//const position = event.feature.getGeometry().get();
+		window.location.hash = 'fairytale/' + name;
+	});
+}
+
+let fairytaleTextTypeStarted = false;
+const fairytaleText = new Typed('#fairytale-text-output', {
+	stringsElement: '#fairytale-text',
+	typeSpeed: 50,
+	showCursor: false,
+	backDelay: 0
+});
+fairytaleText.stop();
+
+$musicToggleBtn.addEventListener('click', () => {
+	soundWidget.isPaused((isPaused) => {
+		if ( ! isPaused) {
+			soundWidget.pause();
+			$musicToggleBtn.innerText = 'Вкл. музыку';
+		}
+		else {
+			soundWidget.play();
+			$musicToggleBtn.innerText = 'Выкл. музыку';
+		}
+	});
+});
+
+let playSound = (url, hide, callback) => {
+	soundWidget.load('https://api.soundcloud.com/tracks/' + url + '&color=%232A9FD6', {
+		//color: '%232A9FD6',
+		auto_play: false,
+		hide_related: true,
+		show_comments: false,
+		show_user: false,
+		show_reposts: false,
+		show_teaser: false,
+		visual: false,
+		show_artwork: false,
+		callback: () => {
+			soundWidget.play();
+			if (callback) callback();
+		}
+	});
+	if (hide) $sound.classList.add('invis');
+	else $sound.classList.remove('invis');
+}
+
+window.addEventListener('hashchange', () => {
+	let hash = window.location.hash.substring(1);
+	if (hash) {
+		let params = hash.split('/');
+		if (params[1]) {
+			switch (params[0]) {
+				case 'fairytale': {
+					console.log('fairytale', params[1]);
+					$map.style.display = 'none';
+					$start.style.display = 'none';
+					$fairytalePage.style.display = 'block';
+					loadVideoById = 'UhN744j0jvQ';
+					if (player) player.loadVideoById(loadVideoById);
+					playSound('498936516?secret_token=s-fWkrC', false, () => {
+						if ( ! fairytaleTextTypeStarted) {
+							fairytaleTextTypeStarted = true;
+							setTimeout(() => {
+								fairytaleText.start();
+							}, 1000);
+						}
+						else fairytaleText.reset();
+					});
+					$musicToggleBtn.style.display = 'none';
+					$btnMap.style.display = 'block';
+					initFullscreenInBtn();
+				}; break;
+			}
+		}
+		else {
+			switch (params[0]) {
+				case 'map': {
+					$map.style.display = 'block';
+					$start.style.display = 'none';
+					$btnMap.style.display = 'none';
+					if (player) player.stopVideo();
+					initFullscreenInBtn();
+					soundWidget.bind(SC.Widget.Events.READY, () => {
+						soundWidget.getCurrentSound((sound) => {
+							if (sound.id != 499380882) playSound('499380882', true);
+						});
+					});
+					$musicToggleBtn.style.display = 'block';
+					$musicToggleBtn.innerText = 'Выкл. музыку';
+				}; break;
+				case 'team': {
+					$team.style.display = 'block';
+					$map.style.display = 'none';
+					$start.style.display = 'none';
+					$btnMap.style.display = 'none';
+					if (player) player.stopVideo();
+					initFullscreenInBtn();
+					soundWidget.bind(SC.Widget.Events.READY, () => {
+						soundWidget.getCurrentSound((sound) => {
+							if (sound.id != 499380882) playSound('499380882', true);
+						});
+					});
+					$musicToggleBtn.style.display = 'block';
+					$musicToggleBtn.innerText = 'Выкл. музыку';
+				}; break;
+			}
+		}
+	}
+	else {
+	}
+});
+window.dispatchEvent(new CustomEvent('hashchange'));

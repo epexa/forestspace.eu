@@ -11,154 +11,166 @@
 		<meta name="author" content="epexa">
 		<title>ForestSpace</title>
 		<!-- Yandex.Metrika counter --> <script type="text/javascript" > (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter49696600 = new Ya.Metrika2({ id:49696600, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true, trackHash:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/tag.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks2"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/49696600" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
-		<link href='https://fonts.googleapis.com/css?family=Khand:300,400,500,600,700' rel='stylesheet' type='text/css'>
-		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.0/animate.min.css">
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
-		<link rel="stylesheet" type="text/css" href="custom.css">
-		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
-		<link rel="shortcut icon" href="images/favicon.ico">
+		<link rel="stylesheet" type="text/css" href="custom.css?201809132115">
+		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootswatch@4.1.3/dist/cyborg/bootstrap.min.css">
+		<!-- <link rel="shortcut icon" href="img/favicon.ico"> -->
 	</head>
 	<body>
-		<div id="page-loader">
-			<div class="loader-icon fa fa-spin colored-border"></div>
+	
+		<!-- <object id="start" type="image/svg+xml" data="img/logo.svg"></object> -->
+		<div id="start"></div>
+
+		<div id="map"></div>
+		
+		<div id="fairytale-page">
+		
+			<div id="fairytale-text">
+				<p>В славянской мифологии и фольклоре часто упоминается живущая в лесу старуха-чародейка с «костяной ногой».</p>
+				<p>Живет она, согласно легенде, в избушке на курьих ножках, вокруг которой стоит забор из человеческих костей, увенчанный черепами.</p>
+				<p>Любит заманивать к себе маленьких детей и добрых молодцев, которых потом зажаривает в печи.</p> <p>Передвигается баба-яга в железной ступе, погоняя пестом и заметая следы помелом.</p>
+				<p>
+					Три типа Бабы Яги:
+					<br>
+					- дарительница, от которой герой получает коня или волшебный предмет;
+					<br>
+					- похитительница, которая и крадет детей;
+					<br>
+					- воительница, с которой герой сражается не на жизнь, а на смерть.
+				</p>
+			</div>
+			<div id="fairytale-text-output"></div>
+			
+			<a class="btn btn-primary btn-lg" id="btn-map" href="#map">Карта мифов</a>
+		
 		</div>
-		<header>
-			<div class="welcome">
-				<div class="logo"><img src="images/logo.png" alt=""> </div>
-				<hr class="animated fadeInUp">
-				<p class="animated fadeInUp">Our website is under construction.</p>
-				<ul class="actions animated fadeInUpBig">
-					<li><a href="#countdown" class="button">Discover</a></li>
-				</ul>
-				<div class="social-icons">
-					<ul class="animated fadeInDownBig">
-						<li><a  target="_blank" href="https://www.instagram.com/forest.space/"><i class="fa fa-fw fa-instagram"></i></a></li>
-					</ul>
+		
+		<div id="team">
+		
+			<div class="team-profile">
+				<div class="team-photo">
+					<img class="rounded" src="img/team/knop.jpg" alt=" ">
 				</div>
-				<div id="video" data-video="cXvdWhP_Lec" data-mute="false"></div>
-			</div>
-		</header>
-		<section class="countdown-section" id="countdown">
-			<div class="container">
-				<div class="row">
-					<h3 data-sr="wait 0.25s, then enter top and move 40px over 1s"><i class="fa fa-clock-o"></i> We are Coming Soon...</h3>
-					<div class="countdown" data-sr="wait 0.25s, then enter bottom and move 40px over 1s"> </div>
-				</div>
-			</div>
-		</section>
-		<section class="about">
-			<div class="container">
-				<div class="row">
-					<h3 data-sr="wait 0.5s, then enter top and move 40px over 1s">ABOUT US.</h3>
-					<div class="col-md-12">
-						<div class="col-md-4" data-sr="wait 0.25s, then enter left and move 40px over 1s">
-							<img src="images/team/knop.jpg" alt=" ">
-							<h2>Maria Knop</h2>
-							<p>Project Manager</p>
-							<div class="social-icons">
-								<ul>
-									<li><a target="_blank" href="https://www.linkedin.com/in/mariaknop/"><i class="fa fa-fw fa-linkedin"></i></a></li>
-									<li><a target="_blank" href="https://beesocial.in/"><i class="fa fa-fw fa-globe"></i></a></li>
-									<li><a target="_blank" href="https://www.instagram.com/knopf127"><i class="fa fa-fw fa-instagram"></i></a></li>
-									<li><a target="_blank" href="https://www.facebook.com/100003465602019"><i class="fa fa-fw fa-facebook"></i></a></li>
-								</ul>
-							</div>
-						</div>
-						<div class="col-md-4" data-sr="wait 0.25s, then enter top and move 40px over 1s">
-							<img src="images/team/pchelka.jpg" alt=" ">
-							<h2>Lesya Pchelka</h2>
-							<p>Archive photo specialist</p>
-							<div class="social-icons">
-								<ul>
-									<li><a target="_blank" href="http://veha.of.by/"><i class="fa fa-fw fa-globe"></i></a></li>
-									<li><a target="_blank" href="https://www.facebook.com/100001527399077"><i class="fa fa-fw fa-facebook"></i></a></li>
-								</ul>
-							</div>
-						</div>
-						<div class="col-md-4" data-sr="wait 0.25s, then enter right and move 40px over 1s">
-							<img src="images/team/arina.jpg" alt=" ">
-							<h2>Arina Khlebus</h2>
-							<p>Web designer</p>
-							<div class="social-icons">
-								<ul>
-									<li><a target="_blank" href="https://www.instagram.com/arina_khlebus/"><i class="fa fa-fw fa-instagram"></i></a></li>
-									<li><a target="_blank" href="https://www.facebook.com/khlebus.ariana"><i class="fa fa-fw fa-facebook"></i></a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12">
-						<div class="col-md-4" data-sr="wait 0.25s, then enter right and move 40px over 1s">
-							<img src="images/team/waleria.jpg" alt=" ">
-							<h2>Waleria Waszczylko</h2>
-							<p>Polish language interpreter</p>
-							<div class="social-icons">
-								<ul>
-									<li><a target="_blank" href="https://www.instagram.com/vvvashchilko/"><i class="fa fa-fw fa-instagram"></i></a></li>
-									<li><a target="_blank" href="https://www.facebook.com/100011709130979"><i class="fa fa-fw fa-facebook"></i></a></li>
-								</ul>
-							</div>
-						</div>
-						<div class="col-md-4" data-sr="wait 0.25s, then enter right and move 40px over 1s">
-							<img src="images/team/victoria.jpg" alt=" ">
-							<h2>Victoria Goncharova</h2>
-							<p>Marketing and SMM</p>
-							<div class="social-icons">
-								<ul>
-									<li><a target="_blank" href="https://www.instagram.com/johngalt_inc/"><i class="fa fa-fw fa-instagram"></i></a></li>
-									<li><a target="_blank" href="https://www.facebook.com/100006774793089"><i class="fa fa-fw fa-facebook"></i></a></li>
-								</ul>
-							</div>
-						</div>
-						<div class="col-md-4" data-sr="wait 0.25s, then enter right and move 40px over 1s">
-							<img src="images/team/erlan.jpg" alt=" ">
-							<h2>Erlan Shindauletov</h2>
-							<p>Web developer</p>
-							<div class="social-icons">
-								<ul>
-									<li><a target="_blank" href="https://www.linkedin.com/in/epexa/"><i class="fa fa-fw fa-linkedin"></i></a></li>
-									<li><a target="_blank" href="https://www.instagram.com/epexa/"><i class="fa fa-fw fa-instagram"></i></a></li>
-									<li><a target="_blank" href="https://www.facebook.com/erlan.kotov"><i class="fa fa-fw fa-facebook"></i></a></li>
-								</ul>
-							</div>
-						</div>
+				<div class="team-description">
+					<h3>Maria Knop</h3>
+					<p>Project manager</p>
+					<div class="team-links">
+						<ul>
+							<li><a target="_blank" href="https://www.linkedin.com/in/mariaknop/"><i class="icon-linkedin"></i></a></li>
+							<li><a target="_blank" href="https://beesocial.in/"><i class="icon-globe"></i></a></li>
+							<li><a target="_blank" href="https://www.instagram.com/knopf127"><i class="icon-instagram"></i></a></li>
+							<li><a target="_blank" href="https://www.facebook.com/100003465602019"><i class="icon-facebook"></i></a></li>
+						</ul>
 					</div>
 				</div>
 			</div>
-		</section>
-		<section class="google-map">
-			<div id="google-container"></div>
-			<div id="zoom-in"></div>
-			<div id="zoom-out"></div>
-			<div class="contact-info">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-12">
-							<address data-sr="wait 0.25s, then enter left and move 40px over 1s"><i class="fa fa-map-marker"></i>Brest, Belarus</address>
-							<!-- <div class="phone" data-sr="wait 0.25s, then enter top and move 40px over 1s"><i class="fa fa-phone"></i>+37529...</div> --> 
-							<br>
-							<div class="email" data-sr="wait 0.25s, then enter right and move 40px over 1s"><i class="fa fa-paper-plane"></i>info@forestspace.eu</div>
-						</div>
+			
+			<div class="team-profile">
+				<div class="team-photo">
+					<img class="rounded" src="img/team/arina.jpg" alt=" ">
+				</div>
+				<div class="team-description">
+					<h3>Arina Khlebus</h3>
+					<p>Web designer</p>
+					<div class="team-links">
+						<ul>
+							<li><a target="_blank" href="https://www.instagram.com/arina_khlebus/"><i class="icon-instagram"></i></a></li>
+							<li><a target="_blank" href="https://www.facebook.com/khlebus.ariana"><i class="icon-facebook"></i></a></li>
+						</ul>
 					</div>
 				</div>
 			</div>
-		</section>
-		<footer>
-			<div class="container">
-				<div class="row">
-					<div class="copyright" data-sr="wait 0.5s, then enter bottom and move 40px over 1s">Copyright © 2018 ForestSpace. All rights reserved.</div>
+			
+			<div class="team-profile">
+				<div class="team-photo">
+					<img class="rounded" src="img/team/victoria.jpg" alt=" ">
+				</div>
+				<div class="team-description">
+					<h3>Victoria Goncharova</h3>
+					<p>Marketing and SMM</p>
+					<div class="team-links">
+						<ul>
+							<li><a target="_blank" href="https://www.instagram.com/johngalt_inc/"><i class="icon-instagram"></i></a></li>
+							<li><a target="_blank" href="https://www.facebook.com/100006774793089"><i class="icon-facebook"></i></a></li>
+						</ul>
+					</div>
 				</div>
 			</div>
-		</footer>
-		<script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.16/jquery.backstretch.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/easy-countdown@2.2.0/dest/jquery.countdown.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/scrollreveal@2.3.3/dist/scrollReveal.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/smoothscroll-for-websites@1.4.6/SmoothScroll.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/jquery-youtube-background@1.0.0/src/jquery.youtubebackground.js"></script>
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAV1KS10sb3O462XosfZTKohHJwi6C0joo"></script>
-		<script src="app.js"></script>
+			
+			<div class="team-profile">
+				<div class="team-photo">
+					<img class="rounded" src="img/team/pchelka.jpg" alt=" ">
+				</div>
+				<div class="team-description">
+					<h3>Lesya Pchelka</h3>
+					<p>Archive photo specialist</p>
+					<div class="team-links">
+						<ul>
+							<li><a target="_blank" href="http://veha.of.by/"><i class="icon-globe"></i></a></li>
+							<li><a target="_blank" href="https://www.facebook.com/100001527399077"><i class="icon-facebook"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			
+			<div class="team-profile">
+				<div class="team-photo">
+					<img class="rounded" src="img/team/waleria.jpg" alt=" ">
+				</div>
+				<div class="team-description">
+					<h3>Waleria Waszczylko</h3>
+					<p>Polish language interpreter</p>
+					<div class="team-links">
+						<ul>
+							<li><a target="_blank" href="https://www.instagram.com/vvvashchilko/"><i class="icon-instagram"></i></a></li>
+							<li><a target="_blank" href="https://www.facebook.com/100011709130979"><i class="icon-facebook"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			
+			<div class="team-profile">
+				<div class="team-photo">
+					<img class="rounded" src="img/team/erlan.jpg" alt=" ">
+				</div>
+				<div class="team-description">
+					<h3>Erlan Shindauletov</h3>
+					<p>Web developer</p>
+					<div class="team-links">
+						<ul>
+							<li><a target="_blank" href="https://www.linkedin.com/in/epexa/"><i class="icon-linkedin"></i></a></li>
+							<li><a target="_blank" href="https://github.com/epexa/"><i class="icon-github"></i></a></li>
+							<li><a target="_blank" href="https://www.instagram.com/epexa/"><i class="icon-instagram"></i></a></li>
+							<li><a target="_blank" href="https://www.facebook.com/erlan.kotov"><i class="icon-facebook"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		
+		</div>
+		
+		<div id="video-layer-block"></div>
+		
+		<iframe id="video" width="1920" height="1080" src="https://www.youtube-nocookie.com/embed/YG25qmmSEHg?rel=0&amp;controls=0&amp;showinfo=0&amp;enablejsapi=1&amp;disablekb=1&amp;modestbranding=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+		
+		<iframe id="sound" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/499293150%3Fsecret_token%3Ds-caK9h&color=%232A9FD6&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=false&show_artwork=false"></iframe>
+		
+		<div class="btn btn-info" id="music-toggle-btn">Выкл. музыку</div>
+		<div class="btn btn-success" id="fullscreen-in-btn">На весь экран</div>
+		<div class="btn btn-danger" id="fullscreen-out-btn">Вернуться в окно</div>
+		
+		<!-- <footer class="footer">
+			<div class="container-fluid">
+				ForestSpace @ 2018
+			</div>
+		</footer> -->
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap.native@2.0.23/dist/bootstrap-native-v4.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vivus@0.4.4/dist/vivus.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.9/lib/typed.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/move-js@0.5.0/move.min.js"></script>
+		<script src="https://www.youtube.com/iframe_api" async defer></script>
+		<script src="https://w.soundcloud.com/player/api.js"></script>
+		<script src="utils.js"></script>
+		<script src="app.js?201809131945"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDx77T27T51z5lBdOUybD2WNk8sGmMC8hc&callback=initMap" async defer></script>
 	</body>
 </html>
