@@ -1,4 +1,4 @@
-﻿initHtmlElements([ '#loading', '#start', '#video', '#map', '#fairytale-page', '#sound', '#btn-map', '#fullscreen-in-btn', '#fullscreen-out-btn', '#music-toggle-btn', '#team' ]);
+﻿initHtmlElements([ '#loading', '#start', '#video', '#map', '#fairytale-page', '#sound', '#btn-map', '#fullscreen-in-btn', '#fullscreen-out-btn', '#music-toggle-btn', '#team', '#authors-btn', '#btn-map-menu' ]);
 
 let soundWidget = SC.Widget('sound');
 
@@ -164,6 +164,16 @@ let playSound = (url, hide, callback) => {
 	else $sound.classList.remove('invis');
 }
 
+const teamAnimation = () => {
+	$team.style.top = window.innerHeight + 'px';
+	move('#team')
+		.duration('60s')
+		.sub('top', window.innerHeight + 1500)
+		.end(() => {
+			teamAnimation();
+		});
+}
+
 window.addEventListener('hashchange', () => {
 	let hash = window.location.hash.substring(1);
 	if (hash) {
@@ -174,6 +184,8 @@ window.addEventListener('hashchange', () => {
 					console.log('fairytale', params[1]);
 					$map.style.display = 'none';
 					$start.style.display = 'none';
+					$authorsBtn.style.display = 'none';
+					$team.style.display = 'none';
 					$fairytalePage.style.display = 'block';
 					loadVideoById = 'UhN744j0jvQ';
 					if (player) player.loadVideoById(loadVideoById);
@@ -189,6 +201,7 @@ window.addEventListener('hashchange', () => {
 						});
 					});
 					$musicToggleBtn.style.display = 'none';
+					$btnMapMenu.style.display = 'none';
 					$btnMap.style.display = 'block';
 					initFullscreenInBtn();
 				}; break;
@@ -197,9 +210,12 @@ window.addEventListener('hashchange', () => {
 		else {
 			switch (params[0]) {
 				case 'map': {
+					$authorsBtn.style.display = 'inline-block';
 					$map.style.display = 'block';
 					$start.style.display = 'none';
+					$team.style.display = 'none';
 					$btnMap.style.display = 'none';
+					$btnMapMenu.style.display = 'none';
 					if (player) player.stopVideo();
 					initFullscreenInBtn();
 					soundWidget.bind(SC.Widget.Events.READY, () => {
@@ -212,18 +228,23 @@ window.addEventListener('hashchange', () => {
 				}; break;
 				case 'team': {
 					$team.style.display = 'block';
+					$btnMapMenu.style.display = 'inline-block';
+					$authorsBtn.style.display = 'none';
 					$map.style.display = 'none';
 					$start.style.display = 'none';
+					$fairytalePage.style.display = 'none';
 					$btnMap.style.display = 'none';
 					if (player) player.stopVideo();
 					initFullscreenInBtn();
 					soundWidget.bind(SC.Widget.Events.READY, () => {
 						soundWidget.getCurrentSound((sound) => {
-							if (sound.id != 499380882) playSound('499380882', true);
+							if (sound.id != 504406362) playSound('504406362', true);
 						});
 					});
 					$musicToggleBtn.style.display = 'block';
 					$musicToggleBtn.innerText = 'Выкл. музыку';
+					$team.style.top = window.innerHeight + 'px';
+					setTimeout(teamAnimation, 3000);
 				}; break;
 			}
 		}
