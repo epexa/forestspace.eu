@@ -1,4 +1,4 @@
-﻿initHtmlElements([ '#loading', '#start', '#video', '#map', '#fairytale-page', '#sound', '#btn-map', '#fullscreen-in-btn', '#fullscreen-out-btn', '#music-toggle-btn', '#team', '#authors-btn', '#btn-map-menu' ]);
+﻿initHtmlElements([ '#loading', '#start', '#video', '#map', '#fairytale-page', '#sound', '#btn-map', '#fullscreen-in-btn', '#fullscreen-out-btn', '#music-toggle-btn', '#team', '#authors-btn', '#btn-map-menu', '#logo' ]);
 
 let soundWidget = SC.Widget('sound');
 
@@ -58,6 +58,8 @@ let loader = new Vivus('start', {
 			$fairytalePage.style.display = 'none';
 			//$sound.style.display = 'none';
 			playSound('499380882', true);
+			$logo.style.width = 'initial';
+			$logo.style.left = '20px';
 		});
 		$loader.addEventListener('mouseover', () => {
 			soundWidget.play();
@@ -184,6 +186,7 @@ window.addEventListener('hashchange', () => {
 					console.log('fairytale', params[1]);
 					$map.style.display = 'none';
 					$start.style.display = 'none';
+					$logo.style.display = 'none';
 					$authorsBtn.style.display = 'none';
 					$team.style.display = 'none';
 					$fairytalePage.style.display = 'block';
@@ -212,6 +215,9 @@ window.addEventListener('hashchange', () => {
 				case 'map': {
 					$authorsBtn.style.display = 'inline-block';
 					$map.style.display = 'block';
+					$logo.style.display = 'block';
+					$logo.style.width = 'initial';
+					$logo.style.left = '20px';
 					$start.style.display = 'none';
 					$team.style.display = 'none';
 					$btnMap.style.display = 'none';
@@ -230,6 +236,7 @@ window.addEventListener('hashchange', () => {
 					$team.style.display = 'block';
 					$btnMapMenu.style.display = 'inline-block';
 					$authorsBtn.style.display = 'none';
+					$logo.style.display = 'none';
 					$map.style.display = 'none';
 					$start.style.display = 'none';
 					$fairytalePage.style.display = 'none';

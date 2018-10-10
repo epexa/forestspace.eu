@@ -69,7 +69,7 @@ svg * {
 
 #loader {
 	width: 500px;
-	margin-top: 30px;
+	margin-top: 80px;
 	stroke: #f9f9f9;
 	stroke-width: 3;
 	stroke-linecap: round;
@@ -381,4 +381,21 @@ text-decoration: none;
     margin: 15% auto;
     width: 200px;
     display: block;
+}
+
+#logo {
+	z-index: 5;
+	position: fixed;
+	top: 20px;
+	margin-bottom: 0;
+	text-align: center;
+	width: 100%;
+}
+#logo h1 {
+	line-height: 1;
+}
+#logo span {
+	font-size: 2.7rem;
+	line-height: 0.8;
+	color: #2a9fd6;
 }
