@@ -1,4 +1,4 @@
-﻿initHtmlElements([ '#start', '#video', '#map', '#fairytale-page', '#sound', '#btn-map', '#fullscreen-in-btn', '#fullscreen-out-btn', '#music-toggle-btn', '#team' ]);
+﻿initHtmlElements([ '#loading', '#start', '#video', '#map', '#fairytale-page', '#sound', '#btn-map', '#fullscreen-in-btn', '#fullscreen-out-btn', '#music-toggle-btn', '#team' ]);
 
 let soundWidget = SC.Widget('sound');
 
@@ -11,10 +11,11 @@ var onYouTubeIframeAPIReady = () => {
 		events: {
 			onReady: (event) => {
 				if (loadVideoById) player.loadVideoById(loadVideoById);
-				event.target.playVideo();
 				//event.target.setPlaybackQuality('hd1080');
+				event.target.playVideo();
 			},
 			onStateChange: (event) => {
+				$loading.style.display = 'none';
 				if (event.data == YT.PlayerState.PLAYING) {
 					if (event.target.j.videoData.video_id == 'YG25qmmSEHg') introVideo = true; else introVideo = false;
 					if ( ! loaded && introVideo) {
@@ -49,10 +50,10 @@ let loader = new Vivus('start', {
 		});
 		let $loader = document.getElementById('loader');
 		$loader.addEventListener('click', () => {
+			$loading.style.display = 'block';
 			//loader.reset().play();
 			$start.style.display = 'none';
-			loaded = true;
-			player.playVideo();
+			if (loaded) player.playVideo(); else loaded = true;
 			fullScreen();
 			$fairytalePage.style.display = 'none';
 			//$sound.style.display = 'none';
@@ -176,14 +177,16 @@ window.addEventListener('hashchange', () => {
 					$fairytalePage.style.display = 'block';
 					loadVideoById = 'UhN744j0jvQ';
 					if (player) player.loadVideoById(loadVideoById);
-					playSound('498936516?secret_token=s-fWkrC', false, () => {
-						if ( ! fairytaleTextTypeStarted) {
-							fairytaleTextTypeStarted = true;
-							setTimeout(() => {
-								fairytaleText.start();
-							}, 1000);
-						}
-						else fairytaleText.reset();
+					soundWidget.bind(SC.Widget.Events.READY, () => {
+						playSound('498936516?secret_token=s-fWkrC', false, () => {
+							if ( ! fairytaleTextTypeStarted) {
+								fairytaleTextTypeStarted = true;
+								setTimeout(() => {
+									fairytaleText.start();
+								}, 1000);
+							}
+							else fairytaleText.reset();
+						});
 					});
 					$musicToggleBtn.style.display = 'none';
 					$btnMap.style.display = 'block';
@@ -229,3 +232,5 @@ window.addEventListener('hashchange', () => {
 	}
 });
 window.dispatchEvent(new CustomEvent('hashchange'));
+
+$loading.style.display = 'none';
