@@ -170,7 +170,7 @@ const teamAnimation = () => {
 	$team.style.top = window.innerHeight + 'px';
 	move('#team')
 		.duration('60s')
-		.sub('top', window.innerHeight + 1500)
+		.sub('top', window.innerHeight + $team.clientHeight)
 		.end(() => {
 			teamAnimation();
 		});
@@ -262,3 +262,14 @@ window.addEventListener('hashchange', () => {
 window.dispatchEvent(new CustomEvent('hashchange'));
 
 $loading.style.display = 'none';
+
+Array.from(document.getElementsByClassName('team-profile')).forEach((element) => {
+	let oldPhoto;
+	element.addEventListener('mouseover', () => {
+		oldPhoto = element.querySelector('img').src;
+		element.querySelector('img').src =  element.dataset.photo;
+	});
+	element.addEventListener('mouseout', () => {
+		element.querySelector('img').src = oldPhoto;
+	});
+});

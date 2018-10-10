@@ -184,18 +184,19 @@ a[href^="https://maps.google.com/maps"]{display:none!important}.gmnoprint a,.gmn
 
 #team {
 	position: fixed !important;
-	/* height: 100%; */
-	height: 1500px;
 	width: 100%;
 	top: 0;
 	left: 0;
 	z-index: 4;
 	display: none;
 }
+#team .team-block {
+    width: 100%;
+    float: left;
+}
 #team .team-profile {
-	    width: 100%;
-		    margin: 50px;
-			    float: left;
+    width: 560px;
+    margin: 50px auto;
 }
 #team .team-photo {
 	    float: left;
