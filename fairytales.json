@@ -8,7 +8,69 @@
       },
       "type": "Feature",
       "properties": {
-        "name": "yaga"
+        "name": "yaga",
+		"video": "UhN744j0jvQ",
+		"audio": "513319641"
+      }
+    },
+	{
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 23.927132, 52.574028 ]
+      },
+      "type": "Feature",
+      "properties": {
+        "name": "puschevik",
+		"video": "UhN744j0jvQ",
+		"audio": "507966561"
+      }
+    },
+	{
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 23.880961, 52.769928 ]
+      },
+      "type": "Feature",
+      "properties": {
+        "name": "vodyanoi",
+		"video": "AiwEu73C81E",
+		"audio": "507966654"
+      }
+    },
+	{
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 23.835231, 52.823232 ]
+      },
+      "type": "Feature",
+      "properties": {
+        "name": "zazovka",
+		"video": "UhN744j0jvQ",
+		"audio": "507966636"
+      }
+    },
+	{
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 23.866965, 52.614938 ]
+      },
+      "type": "Feature",
+      "properties": {
+        "name": "ulya",
+		"video": "UhN744j0jvQ",
+		"audio": "507966642"
+      }
+    },
+	{
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 23.849583, 52.646378 ]
+      },
+      "type": "Feature",
+      "properties": {
+        "name": "leshij",
+		"video": "UhN744j0jvQ",
+		"audio": "507966615"
       }
     }
   ]

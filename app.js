@@ -1,4 +1,4 @@
-﻿initHtmlElements([ '#loading', '#start', '#video', '#map', '#fairytale-page', '#sound', '#btn-map', '#fullscreen-in-btn', '#fullscreen-out-btn', '#music-toggle-btn', '#team', '#authors-btn', '#btn-map-menu', '#logo' ]);
+﻿initHtmlElements([ '#loading', '#start', '#video', '#map', '#fairytale-page', '#sound', '#btn-map', '#fullscreen-in-btn', '#fullscreen-out-btn', '#music-toggle-btn', '#team', '#authors-btn', '#btn-map-menu', '#logo', '#fairytale-text' ]);
 
 let soundWidget = SC.Widget('sound');
 
@@ -30,6 +30,10 @@ var onYouTubeIframeAPIReady = () => {
 				if (event.data == YT.PlayerState.ENDED) {
 					if (introVideo) {
 						window.location.hash = 'map';
+						setTimeout(() => {
+							//map.setZoom(12);
+							animateMapZoomTo(map, 10);
+						}, 3000);
 						//$sound.style.display = 'block';
 					}
 					else player.playVideo();
@@ -37,6 +41,17 @@ var onYouTubeIframeAPIReady = () => {
 			}
 		}
 	});
+}
+
+// https://stackoverflow.com/a/34007969/2823865
+function animateMapZoomTo(map, targetZoom) {
+	var currentZoom = arguments[2] || map.getZoom();
+	if (currentZoom != targetZoom) {
+		google.maps.event.addListenerOnce(map, 'zoom_changed', function (event) {
+			animateMapZoomTo(map, targetZoom, currentZoom + (targetZoom > currentZoom ? 1 : -1));
+		});
+		setTimeout(function(){ map.setZoom(currentZoom) }, 80);
+	}
 }
 
 let loader = new Vivus('start', {
@@ -98,8 +113,13 @@ let initFullscreenInBtn = () => {
 	if ( ! document.fullscreenElement && ! document.msFullscreenElement && ! document.mozFullScreen && ! document.webkitIsFullScreen) $fullscreenInBtn.style.display = 'block';
 }
 
+let mythAudio;
+let mythVideo;
+
+let map;
+
 var initMap = () => {
-	const map = new google.maps.Map($map, {
+	map = new google.maps.Map($map, {
 		center: { lat: 52.68400095664496, lng: 23.93218827226301 },
 		zoom: 16,
 		mapTypeId: 'satellite',
@@ -108,11 +128,11 @@ var initMap = () => {
 		streetViewControl: false,
 		zoomControl: false
 	});
-	map.data.loadGeoJson('fairytales.json');
+	map.data.loadGeoJson('fairytales.json?201810130100');
 	map.data.setStyle(feature => {
 		return {
 			icon: {
-				url: `img/icon_${feature.getProperty('name')}.png`,
+				url: `img/myth_icons/${feature.getProperty('name')}.png`,
 				scaledSize: new google.maps.Size(64, 64)
 			}
 		};
@@ -120,18 +140,11 @@ var initMap = () => {
 	map.data.addListener('click', event => {
 		const name = event.feature.getProperty('name');
 		//const position = event.feature.getGeometry().get();
+		mythAudio = event.feature.getProperty('audio');
+		mythVideo = event.feature.getProperty('video');
 		window.location.hash = 'fairytale/' + name;
 	});
 }
-
-let fairytaleTextTypeStarted = false;
-const fairytaleText = new Typed('#fairytale-text-output', {
-	stringsElement: '#fairytale-text',
-	typeSpeed: 50,
-	showCursor: false,
-	backDelay: 0
-});
-fairytaleText.stop();
 
 $musicToggleBtn.addEventListener('click', () => {
 	soundWidget.isPaused((isPaused) => {
@@ -176,6 +189,16 @@ const teamAnimation = () => {
 		});
 }
 
+/* let fairytaleTextTypeStarted = false;
+const fairytaleText = new Typed('#fairytale-text-output', {
+	stringsElement: '#fairytale-text',
+	typeSpeed: 50,
+	showCursor: false,
+	backDelay: 0
+});
+fairytaleText.stop(); */
+let fairytaleText;
+
 window.addEventListener('hashchange', () => {
 	let hash = window.location.hash.substring(1);
 	if (hash) {
@@ -190,17 +213,26 @@ window.addEventListener('hashchange', () => {
 					$authorsBtn.style.display = 'none';
 					$team.style.display = 'none';
 					$fairytalePage.style.display = 'block';
-					loadVideoById = 'UhN744j0jvQ';
-					if (player) player.loadVideoById(loadVideoById);
+					$fairytaleText.innerHTML = '';
+					if (player) player.loadVideoById(mythVideo);
 					soundWidget.bind(SC.Widget.Events.READY, () => {
-						playSound('498936516?secret_token=s-fWkrC', false, () => {
-							if ( ! fairytaleTextTypeStarted) {
+						playSound(mythAudio, false, () => {
+							/* if ( ! fairytaleTextTypeStarted) {
 								fairytaleTextTypeStarted = true;
 								setTimeout(() => {
 									fairytaleText.start();
 								}, 1000);
 							}
-							else fairytaleText.reset();
+							else fairytaleText.reset(); */
+							$fairytaleText.innerHTML = document.getElementById(params[1]).innerHTML;
+							if (fairytaleText) fairytaleText.destroy();
+							fairytaleText = new Typed('#fairytale-text-output', {
+								stringsElement: '#fairytale-text',
+								typeSpeed: 50,
+								showCursor: false,
+								backDelay: 0
+							});
+							fairytaleText.reset();
 						});
 					});
 					$musicToggleBtn.style.display = 'none';

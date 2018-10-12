@@ -400,3 +400,13 @@ text-decoration: none;
 	line-height: 0.8;
 	color: #2a9fd6;
 }
+
+#yaga, #puschevik, #vodyanoi, #zazovka, #ulya, #leshij {
+	display: none;
+}
+
+/* 4fe084 2a9fd6 */
+.gm-style img[src*="icon"] {
+	border: 2px solid #2a9fd6 !important;
+	border-radius: 30px !important;
+}
