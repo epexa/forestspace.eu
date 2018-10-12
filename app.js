@@ -128,7 +128,7 @@ var initMap = () => {
 		streetViewControl: false,
 		zoomControl: false
 	});
-	map.data.loadGeoJson('fairytales.json?201810130100');
+	map.data.loadGeoJson('fairytales.json?201810130200');
 	map.data.setStyle(feature => {
 		return {
 			icon: {
