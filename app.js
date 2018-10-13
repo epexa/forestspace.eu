@@ -262,7 +262,7 @@ window.addEventListener('hashchange', () => {
 					initFullscreenInBtn();
 					soundWidget.bind(SC.Widget.Events.READY, () => {
 						soundWidget.getCurrentSound((sound) => {
-							if (sound.id != 499380882) playSound('499380882', true);
+							if (sound.id != 499380882) playSound(499380882, true);
 						});
 					});
 					$musicToggleBtn.style.display = 'inline-block';
@@ -283,7 +283,7 @@ window.addEventListener('hashchange', () => {
 					initFullscreenInBtn();
 					soundWidget.bind(SC.Widget.Events.READY, () => {
 						soundWidget.getCurrentSound((sound) => {
-							if (sound.id != 504406362) playSound('504406362', true);
+							if (sound.id != 504406362) playSound(504406362, true);
 						});
 					});
 					$musicToggleBtn.style.display = 'inline-block';
@@ -306,7 +306,7 @@ window.addEventListener('hashchange', () => {
 					initFullscreenInBtn();
 					soundWidget.bind(SC.Widget.Events.READY, () => {
 						soundWidget.getCurrentSound((sound) => {
-							if (sound.id != 504406362) playSound('504406362', true);
+							if (sound.id != 513805107) playSound(513805107, true);
 						});
 					});
 					$musicToggleBtn.style.display = 'inline-block';
