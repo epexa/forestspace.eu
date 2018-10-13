@@ -213,7 +213,7 @@ window.addEventListener('hashchange', () => {
 					$authorsBtn.style.display = 'none';
 					$aboutBtn.style.display = 'none';
 					$team.style.display = 'none';
-					$about.style.display = 'block';
+					$about.style.display = 'none';
 					$fairytalePage.style.display = 'block';
 					$fairytaleText.innerHTML = '';
 					if (player) player.loadVideoById(mythVideo);
