@@ -33,7 +33,7 @@ var onYouTubeIframeAPIReady = () => {
 						setTimeout(() => {
 							//map.setZoom(12);
 							animateMapZoomTo(map, 10);
-						}, 3000);
+						}, 2000);
 						//$sound.style.display = 'block';
 					}
 					else player.playVideo();
