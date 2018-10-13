@@ -1,4 +1,4 @@
-﻿initHtmlElements([ '#loading', '#start', '#video', '#map', '#fairytale-page', '#sound', '#btn-map', '#fullscreen-in-btn', '#fullscreen-out-btn', '#music-toggle-btn', '#team', '#authors-btn', '#btn-map-menu', '#logo', '#fairytale-text' ]);
+﻿initHtmlElements([ '#loading', '#start', '#video', '#map', '#fairytale-page', '#sound', '#btn-map', '#fullscreen-in-btn', '#fullscreen-out-btn', '#music-toggle-btn', '#team', '#authors-btn', '#btn-map-menu', '#logo', '#fairytale-text', '#about', '#about-btn' ]);
 
 let soundWidget = SC.Widget('sound');
 
@@ -92,7 +92,7 @@ let fullScreen = () => {
 	}
 	else if (docElm.mozRequestFullScreen) docElm.mozRequestFullScreen();
 	else if (docElm.webkitRequestFullScreen) docElm.webkitRequestFullScreen();
-	$fullscreenOutBtn.style.display = 'block';
+	$fullscreenOutBtn.style.display = 'inline-block';
 }
 
 $fullscreenInBtn.addEventListener('click', () => {
@@ -106,11 +106,11 @@ $fullscreenOutBtn.addEventListener('click', () => {
 	else if (document.msExitFullscreen) document.msExitFullscreen();
 	else if (document.mozCancelFullScreen) document.mozCancelFullScreen();
 	else if (document.webkitCancelFullScreen) document.webkitCancelFullScreen();
-	$fullscreenInBtn.style.display = 'block';
+	$fullscreenInBtn.style.display = 'inline-block';
 });
 
 let initFullscreenInBtn = () => {
-	if ( ! document.fullscreenElement && ! document.msFullscreenElement && ! document.mozFullScreen && ! document.webkitIsFullScreen) $fullscreenInBtn.style.display = 'block';
+	if ( ! document.fullscreenElement && ! document.msFullscreenElement && ! document.mozFullScreen && ! document.webkitIsFullScreen) $fullscreenInBtn.style.display = 'inline-block';
 }
 
 let mythAudio;
@@ -211,7 +211,9 @@ window.addEventListener('hashchange', () => {
 					$start.style.display = 'none';
 					$logo.style.display = 'none';
 					$authorsBtn.style.display = 'none';
+					$aboutBtn.style.display = 'none';
 					$team.style.display = 'none';
+					$about.style.display = 'block';
 					$fairytalePage.style.display = 'block';
 					$fairytaleText.innerHTML = '';
 					if (player) player.loadVideoById(mythVideo);
@@ -237,7 +239,7 @@ window.addEventListener('hashchange', () => {
 					});
 					$musicToggleBtn.style.display = 'none';
 					$btnMapMenu.style.display = 'none';
-					$btnMap.style.display = 'block';
+					$btnMap.style.display = 'inline-block';
 					initFullscreenInBtn();
 				}; break;
 			}
@@ -246,12 +248,14 @@ window.addEventListener('hashchange', () => {
 			switch (params[0]) {
 				case 'map': {
 					$authorsBtn.style.display = 'inline-block';
+					$aboutBtn.style.display = 'inline-block';
 					$map.style.display = 'block';
 					$logo.style.display = 'block';
 					$logo.style.width = 'initial';
 					$logo.style.left = '20px';
 					$start.style.display = 'none';
 					$team.style.display = 'none';
+					$about.style.display = 'block';
 					$btnMap.style.display = 'none';
 					$btnMapMenu.style.display = 'none';
 					if (player) player.stopVideo();
@@ -261,12 +265,14 @@ window.addEventListener('hashchange', () => {
 							if (sound.id != 499380882) playSound('499380882', true);
 						});
 					});
-					$musicToggleBtn.style.display = 'block';
+					$musicToggleBtn.style.display = 'inline-block';
 					$musicToggleBtn.innerText = 'Выкл. музыку';
 				}; break;
 				case 'team': {
 					$team.style.display = 'block';
 					$btnMapMenu.style.display = 'inline-block';
+					$aboutBtn.style.display = 'inline-block';
+					$about.style.display = 'none';
 					$authorsBtn.style.display = 'none';
 					$logo.style.display = 'none';
 					$map.style.display = 'none';
@@ -280,10 +286,31 @@ window.addEventListener('hashchange', () => {
 							if (sound.id != 504406362) playSound('504406362', true);
 						});
 					});
-					$musicToggleBtn.style.display = 'block';
+					$musicToggleBtn.style.display = 'inline-block';
 					$musicToggleBtn.innerText = 'Выкл. музыку';
 					$team.style.top = window.innerHeight + 'px';
 					setTimeout(teamAnimation, 3000);
+				}; break;
+				case 'about': {
+					$about.style.display = 'block';
+					$btnMapMenu.style.display = 'inline-block';
+					$authorsBtn.style.display = 'inline-block';
+					$team.style.display = 'none';
+					$aboutBtn.style.display = 'none';
+					$logo.style.display = 'none';
+					$map.style.display = 'none';
+					$start.style.display = 'none';
+					$fairytalePage.style.display = 'none';
+					$btnMap.style.display = 'none';
+					if (player) player.stopVideo();
+					initFullscreenInBtn();
+					soundWidget.bind(SC.Widget.Events.READY, () => {
+						soundWidget.getCurrentSound((sound) => {
+							if (sound.id != 504406362) playSound('504406362', true);
+						});
+					});
+					$musicToggleBtn.style.display = 'inline-block';
+					$musicToggleBtn.innerText = 'Выкл. музыку';
 				}; break;
 			}
 		}

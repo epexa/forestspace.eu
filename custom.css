@@ -156,6 +156,13 @@ svg * {
 	opacity: 0;
 }
 
+#btns {
+	position: fixed;
+    right: 0;
+    top: 1rem;
+    z-index: 4;
+}
+
 #btn-map {
 	z-index: 3;
 	position: fixed;
@@ -164,20 +171,10 @@ svg * {
 	display: none;
 }
 
-#fullscreen-in-btn, #fullscreen-out-btn, #music-toggle-btn, #btn-map-menu, #authors-btn {
-	z-index: 4;
-	position: fixed;
-	top: 1rem;
-	right: 1rem;
+#fullscreen-in-btn, #fullscreen-out-btn, #music-toggle-btn, #btn-map-menu, #authors-btn, #about-btn {
 	display: none;
-}
-
-#music-toggle-btn {
-	right: 12rem;
-}
-
-#authors-btn, #btn-map-menu {
-	right: 27em;
+	margin: 0 1rem;
+	z-index: 4;
 }
 
 a[href^="https://maps.google.com/maps"]{display:none!important}.gmnoprint a,.gmnoprint span,.gm-style-cc{display:none}.gmnoprint div{background:none!important}
@@ -409,4 +406,11 @@ text-decoration: none;
 .gm-style img[src*="icon"] {
 	border: 2px solid #2a9fd6 !important;
 	border-radius: 30px !important;
+}
+
+#about {
+	display: none;
+	width: 80%;
+	margin: 5rem auto;
+	font-size: 1.5rem;
 }
