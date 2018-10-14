@@ -1,4 +1,4 @@
-﻿initHtmlElements([ '#loading', '#start', '#video', '#map', '#fairytale-page', '#sound', '#btn-map', '#fullscreen-in-btn', '#fullscreen-out-btn', '#music-toggle-btn', '#team', '#authors-btn', '#btn-map-menu', '#logo', '#fairytale-text', '#about', '#about-btn' ]);
+﻿initHtmlElements([ '#loading', '#start', '#video', '#map', '#fairytale-page', '#sound', '#btn-map', '#fullscreen-in-btn', '#fullscreen-out-btn', '#music-toggle-btn', '#team', '#authors-btn', '#btn-map-menu', '#logo', '#fairytale-text', '#about', '#about-btn', '#langs' ]);
 
 let soundWidget = SC.Widget('sound');
 
@@ -226,7 +226,8 @@ window.addEventListener('hashchange', () => {
 								}, 1000);
 							}
 							else fairytaleText.reset(); */
-							$fairytaleText.innerHTML = document.getElementById(params[1]).innerHTML;
+							//$fairytaleText.innerHTML = document.getElementById(params[1]).innerHTML;
+							$fairytaleText.innerHTML = i18next.t(params[1]);
 							if (fairytaleText) fairytaleText.destroy();
 							fairytaleText = new Typed('#fairytale-text-output', {
 								stringsElement: '#fairytale-text',
@@ -331,4 +332,49 @@ Array.from(document.getElementsByClassName('team-profile')).forEach((element) =>
 	element.addEventListener('mouseout', () => {
 		element.querySelector('img').src = oldPhoto;
 	});
+});
+
+const langList = [
+	{lang: 'ru', name: 'Русский'}, 
+	{lang: 'pl', name: 'Polski'}
+];
+for (let key in langList) {
+	let $langBtn = document.createElement('img');
+	$langBtn.src = `img/${langList[key].lang}.svg`;
+	$langBtn.dataset.lang = langList[key].lang;
+	$langBtn.addEventListener('click', () => {
+		i18next.changeLanguage(langList[key].lang);
+	});
+	$langs.appendChild($langBtn);
+}
+
+$langsList = Array.from($langs.getElementsByTagName('img'));
+
+i18next
+	.use(i18nextXHRBackend)
+	.use(i18nextBrowserLanguageDetector)
+	.init({
+		fallbackLng: 'ru',
+		backend: {
+			loadPath: 'locales/{{lng}}.json'
+		}
+	}/* , (err) => {
+	}*/);
+
+let translationsDom = {};
+
+i18next.on('languageChanged', () => {
+	$langsList.forEach(item => {
+		if (item.dataset.lang != i18next.language) item.style.display = 'inline'; else item.style.display = 'none';
+	});
+	let words = i18next.services.resourceStore.data[i18next.language].translation;
+	for (let key in words) {
+		if (translationsDom[key]) translationsDom[key].revert();
+		translationsDom[key] = findAndReplaceDOMText(document.body, {
+			find: key,
+			//replace: words[key]
+			replace: i18next.t(key)
+		});
+	}
+	$about.innerHTML = i18next.t('about');
 });
