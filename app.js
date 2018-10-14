@@ -354,20 +354,23 @@ i18next
 	.use(i18nextXHRBackend)
 	.use(i18nextBrowserLanguageDetector)
 	.init({
-		fallbackLng: 'ru',
 		backend: {
 			loadPath: 'locales/{{lng}}.json'
-		}
+		},
+		fallbackLng: 'ru',
+		load: 'languageOnly'
 	}/* , (err) => {
 	}*/);
 
 let translationsDom = {};
 
 i18next.on('languageChanged', () => {
+	//let currentLang = i18next.languages.toString(); // i18next.language
+	let currentLang = i18next.languages[0];
 	$langsList.forEach(item => {
-		if (item.dataset.lang != i18next.language) item.style.display = 'inline'; else item.style.display = 'none';
+		if (item.dataset.lang != currentLang) item.style.display = 'inline'; else item.style.display = 'none';
 	});
-	let words = i18next.services.resourceStore.data[i18next.language].translation;
+	let words = i18next.services.resourceStore.data[currentLang].translation;
 	for (let key in words) {
 		if (translationsDom[key]) translationsDom[key].revert();
 		translationsDom[key] = findAndReplaceDOMText(document.body, {
