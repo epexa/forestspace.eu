@@ -338,6 +338,9 @@ const langList = [
 	{lang: 'ru', name: 'Русский'}, 
 	{lang: 'pl', name: 'Polski'}
 ];
+
+let langListArr = [];
+
 for (let key in langList) {
 	let $langBtn = document.createElement('img');
 	$langBtn.src = `img/${langList[key].lang}.svg`;
@@ -346,6 +349,7 @@ for (let key in langList) {
 		i18next.changeLanguage(langList[key].lang);
 	});
 	$langs.appendChild($langBtn);
+	langListArr.push(key);
 }
 
 $langsList = Array.from($langs.getElementsByTagName('img'));
@@ -358,7 +362,8 @@ i18next
 			loadPath: 'locales/{{lng}}.json'
 		},
 		fallbackLng: 'ru',
-		load: 'languageOnly'
+		load: 'languageOnly',
+		whitelist: langListArr,
 	}/* , (err) => {
 	}*/);
 
