@@ -1,20 +1,20 @@
 ﻿initHtmlElements([ '#loading', '#start', '#video', '#map', '#fairytale-page', '#sound', '#btn-map', '#fullscreen-in-btn', '#fullscreen-out-btn', '#music-toggle-btn', '#team', '#authors-btn', '#btn-map-menu', '#logo', '#fairytale-text', '#about', '#about-btn', '#langs' ]);
 
-let soundWidget = SC.Widget('sound');
+var soundWidget = SC.Widget('sound');
 
-let player;
-let introVideo = true;
-let loaded = false;
-let loadVideoById;
-var onYouTubeIframeAPIReady = () => {
+var player;
+var introVideo = true;
+var loaded = false;
+var loadVideoById;
+var onYouTubeIframeAPIReady = function() {
 	player = new YT.Player($video, {
 		events: {
-			onReady: (event) => {
+			onReady: function(event) {
 				if (loadVideoById) player.loadVideoById(loadVideoById);
 				//event.target.setPlaybackQuality('hd1080');
 				event.target.playVideo();
 			},
-			onStateChange: (event) => {
+			onStateChange: function(event) {
 				$loading.style.display = 'none';
 				if (event.data == YT.PlayerState.PLAYING) {
 					if (event.target.j.videoData.video_id == 'YG25qmmSEHg') introVideo = true; else introVideo = false;
@@ -30,7 +30,7 @@ var onYouTubeIframeAPIReady = () => {
 				if (event.data == YT.PlayerState.ENDED) {
 					if (introVideo) {
 						window.location.hash = 'map';
-						setTimeout(() => {
+						setTimeout(function() {
 							//map.setZoom(12);
 							animateMapZoomTo(map, 10);
 						}, 2000);
@@ -54,17 +54,17 @@ function animateMapZoomTo(map, targetZoom) {
 	}
 }
 
-let loader = new Vivus('start', {
+var loader = new Vivus('start', {
 	type: 'oneByOne',
 	file: 'img/logo.svg',
 	//start: 'autostart',
 	//duration: 1000,
-	onReady: () => {
-		loader.play(1, () => {
+	onReady: function() {
+		loader.play(1, function() {
 			console.log('loader finish');
 		});
-		let $loader = document.getElementById('loader');
-		$loader.addEventListener('click', () => {
+		var $loader = document.getElementById('loader');
+		$loader.addEventListener('click', function() {
 			$loading.style.display = 'block';
 			//loader.reset().play();
 			$start.style.display = 'none';
@@ -76,15 +76,15 @@ let loader = new Vivus('start', {
 			$logo.style.width = 'initial';
 			$logo.style.left = '20px';
 		});
-		$loader.addEventListener('mouseover', () => {
+		$loader.addEventListener('mouseover', function() {
 			soundWidget.play();
 		});
 	}
 });
 
-let docElm = document.documentElement;
+var docElm = document.documentElement;
 
-let fullScreen = () => {
+var fullScreen = function() {
 	if (docElm.requestFullscreen) docElm.requestFullscreen();
 	else if (docElm.msRequestFullscreen) {
 		docElm = document.body;
@@ -95,12 +95,12 @@ let fullScreen = () => {
 	$fullscreenOutBtn.style.display = 'inline-block';
 }
 
-$fullscreenInBtn.addEventListener('click', () => {
+$fullscreenInBtn.addEventListener('click', function() {
 	$fullscreenInBtn.style.display = 'none';
 	fullScreen();
 });
 
-$fullscreenOutBtn.addEventListener('click', () => {
+$fullscreenOutBtn.addEventListener('click', function() {
 	$fullscreenOutBtn.style.display = 'none';
 	if (document.exitFullscreen) document.exitFullscreen();
 	else if (document.msExitFullscreen) document.msExitFullscreen();
@@ -109,45 +109,47 @@ $fullscreenOutBtn.addEventListener('click', () => {
 	$fullscreenInBtn.style.display = 'inline-block';
 });
 
-let initFullscreenInBtn = () => {
+var initFullscreenInBtn = function() {
 	if ( ! document.fullscreenElement && ! document.msFullscreenElement && ! document.mozFullScreen && ! document.webkitIsFullScreen) $fullscreenInBtn.style.display = 'inline-block';
 }
 
-let mythAudio;
-let mythVideo;
+var mythAudio;
+var mythVideo;
 
-let map;
+var map;
 
-var initMap = () => {
-	map = new google.maps.Map($map, {
-		center: { lat: 52.68400095664496, lng: 23.93218827226301 },
-		zoom: 16,
-		mapTypeId: 'satellite',
-		mapTypeControl: false,
-		fullscreenControl: false,
-		streetViewControl: false,
-		zoomControl: false
-	});
-	map.data.loadGeoJson('fairytales.json?201810151230');
-	map.data.setStyle(feature => {
-		return {
-			icon: {
-				url: `img/myth_icons/${feature.getProperty('name')}.png`,
-				scaledSize: new google.maps.Size(64, 64)
-			}
-		};
-	});
-	map.data.addListener('click', event => {
-		const name = event.feature.getProperty('name');
-		//const position = event.feature.getGeometry().get();
-		mythAudio = event.feature.getProperty('audio');
-		mythVideo = event.feature.getProperty('video');
-		window.location.hash = 'fairytale/' + name;
-	});
+var initMap = function() {
+	//document.addEventListener('DOMContentLoaded', function() {
+		map = new google.maps.Map($map, {
+			center: { lat: 52.68400095664496, lng: 23.93218827226301 },
+			zoom: 16,
+			mapTypeId: 'satellite',
+			mapTypeControl: false,
+			fullscreenControl: false,
+			streetViewControl: false,
+			zoomControl: false
+		});
+		map.data.loadGeoJson('fairytales.json?201810151230');
+		map.data.setStyle(function(feature) {
+			return {
+				icon: {
+					url: 'img/myth_icons/' + feature.getProperty('name') + '.png',
+					scaledSize: new google.maps.Size(64, 64)
+				}
+			};
+		});
+		map.data.addListener('click', function(event) {
+			const name = event.feature.getProperty('name');
+			//const position = event.feature.getGeometry().get();
+			mythAudio = event.feature.getProperty('audio');
+			mythVideo = event.feature.getProperty('video');
+			window.location.hash = 'fairytale/' + name;
+		});
+	//});
 }
 
-$musicToggleBtn.addEventListener('click', () => {
-	soundWidget.isPaused((isPaused) => {
+$musicToggleBtn.addEventListener('click', function() {
+	soundWidget.isPaused(function(isPaused) {
 		if ( ! isPaused) {
 			soundWidget.pause();
 			$musicToggleBtn.innerText = 'Вкл. музыку';
@@ -159,7 +161,7 @@ $musicToggleBtn.addEventListener('click', () => {
 	});
 });
 
-let playSound = (url, hide, callback) => {
+var playSound = function(url, hide, callback) {
 	soundWidget.load('https://api.soundcloud.com/tracks/' + url + '&color=%232A9FD6', {
 		//color: '%232A9FD6',
 		auto_play: false,
@@ -170,7 +172,7 @@ let playSound = (url, hide, callback) => {
 		show_teaser: false,
 		visual: false,
 		show_artwork: false,
-		callback: () => {
+		callback: function() {
 			soundWidget.play();
 			if (callback) callback();
 		}
@@ -179,17 +181,17 @@ let playSound = (url, hide, callback) => {
 	else $sound.classList.remove('invis');
 }
 
-const teamAnimation = () => {
+const teamAnimation = function() {
 	$team.style.top = window.innerHeight + 'px';
 	move('#team')
 		.duration('60s')
 		.sub('top', window.innerHeight + $team.clientHeight)
-		.end(() => {
+		.end(function() {
 			teamAnimation();
 		});
 }
 
-/* let fairytaleTextTypeStarted = false;
+/* var fairytaleTextTypeStarted = false;
 const fairytaleText = new Typed('#fairytale-text-output', {
 	stringsElement: '#fairytale-text',
 	typeSpeed: 50,
@@ -197,12 +199,12 @@ const fairytaleText = new Typed('#fairytale-text-output', {
 	backDelay: 0
 });
 fairytaleText.stop(); */
-let fairytaleText;
+var fairytaleText;
 
-window.addEventListener('hashchange', () => {
-	let hash = window.location.hash.substring(1);
+window.addEventListener('hashchange', function() {
+	var hash = window.location.hash.substring(1);
 	if (hash) {
-		let params = hash.split('/');
+		var params = hash.split('/');
 		if (params[1]) {
 			switch (params[0]) {
 				case 'fairytale': {
@@ -217,11 +219,11 @@ window.addEventListener('hashchange', () => {
 					$fairytalePage.style.display = 'block';
 					$fairytaleText.innerHTML = '';
 					if (player) player.loadVideoById(mythVideo);
-					soundWidget.bind(SC.Widget.Events.READY, () => {
-						playSound(mythAudio, false, () => {
+					soundWidget.bind(SC.Widget.Events.READY, function() {
+						playSound(mythAudio, false, function() {
 							/* if ( ! fairytaleTextTypeStarted) {
 								fairytaleTextTypeStarted = true;
-								setTimeout(() => {
+								setTimeout(function() {
 									fairytaleText.start();
 								}, 1000);
 							}
@@ -261,8 +263,8 @@ window.addEventListener('hashchange', () => {
 					$btnMapMenu.style.display = 'none';
 					if (player) player.stopVideo();
 					initFullscreenInBtn();
-					soundWidget.bind(SC.Widget.Events.READY, () => {
-						soundWidget.getCurrentSound((sound) => {
+					soundWidget.bind(SC.Widget.Events.READY, function() {
+						soundWidget.getCurrentSound(function(sound) {
 							if (sound.id != 499380882) playSound(499380882, true);
 						});
 					});
@@ -282,8 +284,8 @@ window.addEventListener('hashchange', () => {
 					$btnMap.style.display = 'none';
 					if (player) player.stopVideo();
 					initFullscreenInBtn();
-					soundWidget.bind(SC.Widget.Events.READY, () => {
-						soundWidget.getCurrentSound((sound) => {
+					soundWidget.bind(SC.Widget.Events.READY, function() {
+						soundWidget.getCurrentSound(function(sound) {
 							if (sound.id != 504406362) playSound(504406362, true);
 						});
 					});
@@ -305,8 +307,8 @@ window.addEventListener('hashchange', () => {
 					$btnMap.style.display = 'none';
 					if (player) player.stopVideo();
 					initFullscreenInBtn();
-					soundWidget.bind(SC.Widget.Events.READY, () => {
-						soundWidget.getCurrentSound((sound) => {
+					soundWidget.bind(SC.Widget.Events.READY, function() {
+						soundWidget.getCurrentSound(function(sound) {
 							if (sound.id != 513805107) playSound(513805107, true);
 						});
 					});
@@ -319,17 +321,18 @@ window.addEventListener('hashchange', () => {
 	else {
 	}
 });
+
 window.dispatchEvent(new CustomEvent('hashchange'));
 
 $loading.style.display = 'none';
 
-Array.from(document.getElementsByClassName('team-profile')).forEach((element) => {
-	let oldPhoto;
-	element.addEventListener('mouseover', () => {
+Array.from(document.getElementsByClassName('team-profile')).forEach(function(element) {
+	var oldPhoto;
+	element.addEventListener('mouseover', function() {
 		oldPhoto = element.querySelector('img').src;
 		element.querySelector('img').src =  element.dataset.photo;
 	});
-	element.addEventListener('mouseout', () => {
+	element.addEventListener('mouseout', function() {
 		element.querySelector('img').src = oldPhoto;
 	});
 });
@@ -339,14 +342,14 @@ const langList = [
 	{lang: 'pl', name: 'Polski'}
 ];
 
-let langListArr = [];
+var langListArr = [];
 
-for (let key in langList) {
-	let $langBtn = document.createElement('img');
-	$langBtn.src = `img/${langList[key].lang}.svg`;
+for (var key in langList) {
+	var $langBtn = document.createElement('img');
+	$langBtn.src = 'img/' + langList[key].lang + '.svg';
 	$langBtn.dataset.lang = langList[key].lang;
-	$langBtn.addEventListener('click', () => {
-		i18next.changeLanguage(langList[key].lang);
+	$langBtn.addEventListener('click', function() {
+		i18next.changeLanguage(this.dataset.lang);
 	});
 	$langs.appendChild($langBtn);
 	langListArr.push(langList[key].lang);
@@ -364,19 +367,19 @@ i18next
 		fallbackLng: 'ru',
 		load: 'languageOnly',
 		whitelist: langListArr,
-	}/* , (err) => {
+	}/* , function(err) {
 	}*/);
 
-let translationsDom = {};
+var translationsDom = {};
 
-i18next.on('languageChanged', () => {
-	//let currentLang = i18next.languages.toString(); // i18next.language
-	let currentLang = i18next.languages[0];
-	$langsList.forEach(item => {
+i18next.on('languageChanged', function() {
+	//var currentLang = i18next.languages.toString(); // i18next.language
+	var currentLang = i18next.languages[0];
+	$langsList.forEach(function(item) {
 		if (item.dataset.lang != currentLang) item.style.display = 'inline'; else item.style.display = 'none';
 	});
-	let words = i18next.services.resourceStore.data[currentLang].translation;
-	for (let key in words) {
+	var words = i18next.services.resourceStore.data[currentLang].translation;
+	for (var key in words) {
 		if (translationsDom[key]) translationsDom[key].revert();
 		translationsDom[key] = findAndReplaceDOMText(document.body, {
 			find: key,

@@ -1,18 +1,18 @@
-let camelCase = (str) => {
+var camelCase = function(str) {
 	str = str.replace(/(#)/g, '').replace(/\./g, '');
-	str = str.replace(/-([a-z])/g, (_m, l) => {
+	str = str.replace(/-([a-z])/g, function(_m, l) {
 		return l.toUpperCase();
 	});
-	return str.replace(/ ([a-z])/g, (_m, l) => {
+	return str.replace(/ ([a-z])/g, function(_m, l) {
 		return l.toUpperCase();
 	});
 }
 
-let initHtmlElements = ($htmlElements) => {
+var initHtmlElements = function($htmlElements) {
 	/*document.addEventListener('DOMContentLoaded', () => {
 	});*/
-	for (let name in $htmlElements) {
-		let nameConst = $htmlElements[name];
+	for (var name in $htmlElements) {
+		var nameConst = $htmlElements[name];
 		nameConst = camelCase(nameConst);
 		eval('window.$' + nameConst + ' = document.querySelector("' + $htmlElements[name] + '");');
 	}
