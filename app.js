@@ -349,7 +349,7 @@ for (let key in langList) {
 		i18next.changeLanguage(langList[key].lang);
 	});
 	$langs.appendChild($langBtn);
-	langListArr.push(key);
+	langListArr.push(langList[key].lang);
 }
 
 $langsList = Array.from($langs.getElementsByTagName('img'));
