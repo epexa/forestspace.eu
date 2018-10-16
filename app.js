@@ -39,10 +39,7 @@ var onYouTubeIframeAPIReady = function() {
 					else player.playVideo();
 				}
 			}
-		},
-		host: 'https://www.youtube-nocookie.com',
-		origin: 'https://forestspace.eu',
-		widget_referrer: 'https://forestspace.eu'
+		}
 	});
 }
 

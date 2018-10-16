@@ -70,11 +70,11 @@ svg * {
 #loader {
 	width: 500px;
 	margin-top: 80px;
-	stroke: #f9f9f9;
+	/* stroke: #f9f9f9;
 	stroke-width: 3;
 	stroke-linecap: round;
 	stroke-linejoin: round;
-	stroke-miterlimit: 10;
+	stroke-miterlimit: 10; */
 	cursor: pointer;
 	transition: 1s;
 }
