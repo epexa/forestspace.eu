@@ -8,6 +8,7 @@
       },
       "type": "Feature",
       "properties": {
+		"type": "myth",
         "name": "yaga",
 		"video": "f-15DYjVxXk",
 		"audio": {
@@ -23,6 +24,7 @@
       },
       "type": "Feature",
       "properties": {
+		"type": "myth",
         "name": "puschevik",
 		"video": "-kM544Brvv4",
 		"audio": {
@@ -38,6 +40,7 @@
       },
       "type": "Feature",
       "properties": {
+		"type": "myth",
         "name": "vodyanoi",
 		"video": "AiwEu73C81E",
 		"audio": {
@@ -53,6 +56,7 @@
       },
       "type": "Feature",
       "properties": {
+		"type": "myth",
         "name": "zazovka",
 		"video": "aNeEOJ-T5G4",
 		"audio": {
@@ -68,6 +72,7 @@
       },
       "type": "Feature",
       "properties": {
+		"type": "myth",
         "name": "ulya",
 		"video": "ec1N3EDr7iI",
 		"audio": {
@@ -83,6 +88,7 @@
       },
       "type": "Feature",
       "properties": {
+		"type": "myth",
         "name": "leshij",
 		"video": "7cidEcUr1X8",
 		"audio": {
@@ -98,6 +104,7 @@
       },
       "type": "Feature",
       "properties": {
+		"type": "myth",
         "name": "liho",
 		"video": "bKWedCg5NLI",
 		"audio": {
@@ -113,6 +120,7 @@
       },
       "type": "Feature",
       "properties": {
+		"type": "myth",
         "name": "pasechnik",
 		"video": "i5sfoL3bRfU",
 		"audio": {
@@ -128,6 +136,7 @@
       },
       "type": "Feature",
       "properties": {
+		"type": "myth",
         "name": "rusalki",
 		"video": "Q9Ntc0JGZYA",
 		"audio": {
@@ -143,12 +152,90 @@
       },
       "type": "Feature",
       "properties": {
+		"type": "myth",
         "name": "vegetandry",
 		"video": "SvsfJpzlEEQ",
 		"audio": {
 			"ru": "513515712",
 			"pl": "515697603"
 		}
+      }
+    },
+	{
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 23.927132, 52.574028 ]
+      },
+      "type": "Feature",
+      "properties": {
+		"type": "video",
+		"video": "3cPozrlpgII"
+      }
+    },
+	{
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 23.896866, 52.580984 ]
+      },
+      "type": "Feature",
+      "properties": {
+		"type": "video",
+		"video": "x9gIe9XuxUk"
+      }
+    },
+	{
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 23.735455, 52.655611 ]
+      },
+      "type": "Feature",
+      "properties": {
+		"type": "video",
+		"video": "G4Bq61UAWp4"
+      }
+    },
+	{
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 23.864176, 52.629858 ]
+      },
+      "type": "Feature",
+      "properties": {
+		"type": "video",
+		"video": "oyI74zzu61w"
+      }
+    },
+	{
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 23.849583, 52.646378 ]
+      },
+      "type": "Feature",
+      "properties": {
+		"type": "video",
+		"video": "fZfkWIHOtRU"
+      }
+    },
+	{
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 23.835231, 52.823232 ]
+      },
+      "type": "Feature",
+      "properties": {
+		"type": "video",
+		"video": "s1kz9kFp_d0"
+      }
+    },
+	{
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 24.045836, 52.556165 ]
+      },
+      "type": "Feature",
+      "properties": {
+		"type": "video",
+		"video": "v5xX0OISRsc"
       }
     }
   ]
