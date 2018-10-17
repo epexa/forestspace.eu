@@ -10,7 +10,10 @@
       "properties": {
         "name": "yaga",
 		"video": "f-15DYjVxXk",
-		"audio": "513319641"
+		"audio": {
+			"ru": "513319641",
+			"pl": "515697630"
+		}
       }
     },
 	{
@@ -22,7 +25,10 @@
       "properties": {
         "name": "puschevik",
 		"video": "-kM544Brvv4",
-		"audio": "507966561"
+		"audio": {
+			"ru": "507966561",
+			"pl": "515697606"
+		}
       }
     },
 	{
@@ -34,7 +40,10 @@
       "properties": {
         "name": "vodyanoi",
 		"video": "AiwEu73C81E",
-		"audio": "507966654"
+		"audio": {
+			"ru": "507966654",
+			"pl": "515697591"
+		}
       }
     },
 	{
@@ -46,7 +55,10 @@
       "properties": {
         "name": "zazovka",
 		"video": "aNeEOJ-T5G4",
-		"audio": "507966636"
+		"audio": {
+			"ru": "507966636",
+			"pl": "515696211"
+		}
       }
     },
 	{
@@ -58,7 +70,10 @@
       "properties": {
         "name": "ulya",
 		"video": "ec1N3EDr7iI",
-		"audio": "507966642"
+		"audio": {
+			"ru": "507966642",
+			"pl": ""
+		}
       }
     },
 	{
@@ -70,7 +85,10 @@
       "properties": {
         "name": "leshij",
 		"video": "7cidEcUr1X8",
-		"audio": "507966615"
+		"audio": {
+			"ru": "507966615",
+			"pl": "515697627"
+		}
       }
     },
 	{
@@ -82,7 +100,10 @@
       "properties": {
         "name": "liho",
 		"video": "bKWedCg5NLI",
-		"audio": "507966609"
+		"audio": {
+			"ru": "507966609",
+			"pl": "515697624"
+		}
       }
     },
 	{
@@ -94,7 +115,10 @@
       "properties": {
         "name": "pasechnik",
 		"video": "i5sfoL3bRfU",
-		"audio": "507966579"
+		"audio": {
+			"ru": "507966579",
+			"pl": "515697612"
+		}
       }
     },
 	{
@@ -106,7 +130,10 @@
       "properties": {
         "name": "rusalki",
 		"video": "Q9Ntc0JGZYA",
-		"audio": "507966552"
+		"audio": {
+			"ru": "507966552",
+			"pl": "515697618"
+		}
       }
     },
 	{
@@ -118,7 +145,10 @@
       "properties": {
         "name": "vegetandry",
 		"video": "SvsfJpzlEEQ",
-		"audio": "513515712"
+		"audio": {
+			"ru": "513515712",
+			"pl": "515697603"
+		}
       }
     }
   ]

@@ -129,7 +129,7 @@ var initMap = function() {
 			streetViewControl: false,
 			zoomControl: false
 		});
-		map.data.loadGeoJson('fairytales.json?201810151230');
+		map.data.loadGeoJson('fairytales.json?201810171845');
 		map.data.setStyle(function(feature) {
 			return {
 				icon: {
@@ -141,7 +141,7 @@ var initMap = function() {
 		map.data.addListener('click', function(event) {
 			const name = event.feature.getProperty('name');
 			//const position = event.feature.getGeometry().get();
-			mythAudio = event.feature.getProperty('audio');
+			mythAudio = event.feature.getProperty('audio')[currentLang];
 			mythVideo = event.feature.getProperty('video');
 			window.location.hash = 'fairytale/' + name;
 		});
@@ -372,9 +372,11 @@ i18next
 
 var translationsDom = {};
 
+var currentLang;
+
 i18next.on('languageChanged', function() {
 	//var currentLang = i18next.languages.toString(); // i18next.language
-	var currentLang = i18next.languages[0];
+	currentLang = i18next.languages[0];
 	$langsList.forEach(function(item) {
 		if (item.dataset.lang != currentLang) item.style.display = 'inline'; else item.style.display = 'none';
 	});
