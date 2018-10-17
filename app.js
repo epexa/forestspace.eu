@@ -1,4 +1,4 @@
-﻿initHtmlElements([ '#loading', '#start', '#video', '#map', '#fairytale-page', '#sound', '#btn-map', '#fullscreen-in-btn', '#fullscreen-out-btn', '#music-off-btn', '#music-on-btn', '#team', '#authors-btn', '#btn-map-menu', '#logo', '#fairytale-text', '#about', '#about-btn', '#langs', '#map360-btn', '#video-layer-block' ]);
+﻿initHtmlElements([ '#loading', '#start', '#video', '#map', '#fairytale-page', '#sound', '#btn-map', '#fullscreen-in-btn', '#fullscreen-out-btn', '#music-off-btn', '#music-on-btn', '#team', '#authors-btn', '#btn-map-menu', '#logo', '#fairytale-text', '#about', '#about-btn', '#langs', '#map360-btn', '#video-layer-block', '#add-menu' ]);
 
 var soundWidget = SC.Widget('sound');
 
@@ -252,10 +252,10 @@ window.addEventListener('hashchange', function() {
 					$map.style.display = 'none';
 					$start.style.display = 'none';
 					$logo.style.display = 'none';
-					$authorsBtn.style.display = 'none';
-					$aboutBtn.style.display = 'none';
 					$team.style.display = 'none';
 					$about.style.display = 'none';
+					$addMenu.style.display = 'none';
+					$map360Btn.style.display = 'none';
 					$fairytalePage.style.display = 'block';
 					$fairytaleText.innerHTML = '';
 					if (player) player.loadVideoById(mythVideo);
@@ -292,10 +292,9 @@ window.addEventListener('hashchange', function() {
 					$map.style.display = 'none';
 					$start.style.display = 'none';
 					$logo.style.display = 'none';
-					$authorsBtn.style.display = 'none';
-					$aboutBtn.style.display = 'none';
 					$team.style.display = 'none';
 					$about.style.display = 'none';
+					$addMenu.style.display = 'none';
 					$fairytalePage.style.display = 'none';
 					if (player) player.loadVideoById(mythVideo);
 					soundWidget.bind(SC.Widget.Events.READY, function() {
@@ -325,6 +324,7 @@ window.addEventListener('hashchange', function() {
 						$btnMapMenu.style.display = 'inline-block';
 						$map360Btn.style.display = 'none';
 					}
+					$addMenu.style.display = 'block';
 					$authorsBtn.style.display = 'inline-block';
 					$aboutBtn.style.display = 'inline-block';
 					$map.style.display = 'block';
@@ -347,6 +347,7 @@ window.addEventListener('hashchange', function() {
 				case 'team': {
 					$team.style.display = 'block';
 					$btnMapMenu.style.display = 'inline-block';
+					$addMenu.style.display = 'block';
 					$aboutBtn.style.display = 'inline-block';
 					$map360Btn.style.display = 'inline-block';
 					$about.style.display = 'none';
@@ -370,6 +371,7 @@ window.addEventListener('hashchange', function() {
 				case 'about': {
 					$about.style.display = 'block';
 					$btnMapMenu.style.display = 'inline-block';
+					$addMenu.style.display = 'block';
 					$authorsBtn.style.display = 'inline-block';
 					$map360Btn.style.display = 'inline-block';
 					$team.style.display = 'none';

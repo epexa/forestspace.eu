@@ -415,16 +415,20 @@ text-decoration: none;
 	font-size: 1.5rem;
 }
 
-#langs {
+#add-menu {
 	position: fixed;
     right: 0.5rem;
     bottom: 1rem;
     z-index: 5;
+}
+
+#langs {
+	display: inline-block;
 }
 #langs img {
 	border-radius: 0.3rem;
 	cursor: pointer;
     height: 2rem;
     width: 3rem;
-    margin: 0 0.4rem;	
+    margin: 0 0.5rem;	
 }
