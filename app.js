@@ -1,4 +1,4 @@
-﻿initHtmlElements([ '#loading', '#start', '#video', '#map', '#fairytale-page', '#sound', '#btn-map', '#fullscreen-in-btn', '#fullscreen-out-btn', '#music-off-btn', '#music-on-btn', '#team', '#authors-btn', '#btn-map-menu', '#logo', '#fairytale-text', '#about', '#about-btn', '#langs', '#map360-btn', '#video-layer-block', '#add-menu' ]);
+﻿initHtmlElements([ '#loading', '#start', '#video', '#map', '#fairytale-page', '#sound', '#btn-map', '#fullscreen-in-btn', '#fullscreen-out-btn', '#music-off-btn', '#music-on-btn', '#team', '#authors-btn', '#btn-map-menu', '#logo', '#fairytale-text', '#about', '#about-btn', '#langs', '#map360-btn', '#video-layer-block', '#add-menu', '#stats-btn', '#stats' ]);
 
 var soundWidget = SC.Widget('sound');
 
@@ -256,6 +256,8 @@ window.addEventListener('hashchange', function() {
 					$about.style.display = 'none';
 					$addMenu.style.display = 'none';
 					$map360Btn.style.display = 'none';
+					$stats.style.display = 'none';
+					$statsBtn.style.display = 'none';
 					$fairytalePage.style.display = 'block';
 					$fairytaleText.innerHTML = '';
 					if (player) player.loadVideoById(mythVideo);
@@ -304,6 +306,8 @@ window.addEventListener('hashchange', function() {
 					$musicOnBtn.style.display = 'none';
 					$btnMapMenu.style.display = 'none';
 					$map360Btn.style.display = 'inline-block';
+					$stats.style.display = 'none';
+					$statsBtn.style.display = 'none';
 					initFullscreenInBtn();
 				}; break;
 			}
@@ -327,6 +331,7 @@ window.addEventListener('hashchange', function() {
 					$addMenu.style.display = 'block';
 					$authorsBtn.style.display = 'inline-block';
 					$aboutBtn.style.display = 'inline-block';
+					$statsBtn.style.display = 'inline-block';
 					$map.style.display = 'block';
 					$logo.style.display = 'block';
 					$logo.style.width = 'initial';
@@ -334,6 +339,7 @@ window.addEventListener('hashchange', function() {
 					$start.style.display = 'none';
 					$team.style.display = 'none';
 					$about.style.display = 'none';
+					$stats.style.display = 'none';
 					$btnMap.style.display = 'none';
 					if (player) player.stopVideo();
 					initFullscreenInBtn();
@@ -357,6 +363,8 @@ window.addEventListener('hashchange', function() {
 					$start.style.display = 'none';
 					$fairytalePage.style.display = 'none';
 					$btnMap.style.display = 'none';
+					$stats.style.display = 'none';
+					$statsBtn.style.display = 'none';
 					if (player) player.stopVideo();
 					initFullscreenInBtn();
 					soundWidget.bind(SC.Widget.Events.READY, function() {
@@ -381,6 +389,8 @@ window.addEventListener('hashchange', function() {
 					$start.style.display = 'none';
 					$fairytalePage.style.display = 'none';
 					$btnMap.style.display = 'none';
+					$stats.style.display = 'none';
+					$statsBtn.style.display = 'none';
 					if (player) player.stopVideo();
 					initFullscreenInBtn();
 					soundWidget.bind(SC.Widget.Events.READY, function() {
@@ -388,6 +398,30 @@ window.addEventListener('hashchange', function() {
 							if (sound.id != 513805107) playSound(513805107, true);
 						});
 					});
+					$musicOffBtn.style.display = 'inline-block';
+				}; break;
+				case 'statistics': {
+					$stats.style.display = 'block';
+					$about.style.display = 'none';
+					$btnMapMenu.style.display = 'inline-block';
+					$addMenu.style.display = 'block';
+					$authorsBtn.style.display = 'inline-block';
+					$map360Btn.style.display = 'inline-block';
+					$aboutBtn.style.display = 'inline-block';
+					$team.style.display = 'none';
+					$logo.style.display = 'none';
+					$map.style.display = 'none';
+					$start.style.display = 'none';
+					$fairytalePage.style.display = 'none';
+					$btnMap.style.display = 'none';
+					$statsBtn.style.display = 'none';
+					if (player) player.stopVideo();
+					initFullscreenInBtn();
+					/* soundWidget.bind(SC.Widget.Events.READY, function() {
+						soundWidget.getCurrentSound(function(sound) {
+							if (sound.id != 513805107) playSound(513805107, true);
+						});
+					}); */
 					$musicOffBtn.style.display = 'inline-block';
 				}; break;
 			}

@@ -171,7 +171,7 @@ svg * {
 	display: none;
 }
 
-#fullscreen-in-btn, #fullscreen-out-btn, #music-off-btn, #music-on-btn, #btn-map-menu, #authors-btn, #about-btn, #map360-btn {
+#fullscreen-in-btn, #fullscreen-out-btn, #music-off-btn, #music-on-btn, #btn-map-menu, #authors-btn, #about-btn, #map360-btn, #stats-btn {
 	display: none;
 	margin: 0 1rem;
 	z-index: 4;
@@ -431,4 +431,28 @@ text-decoration: none;
     height: 2rem;
     width: 3rem;
     margin: 0 0.5rem;	
+}
+
+#stats {
+	background: rgb(14, 36, 47);
+	display: none;
+}
+#stats > div {
+	margin: 0px auto;
+	position: relative;
+	height: 0px;
+	overflow: hidden;
+	max-width: 816px;
+	padding-bottom: 2900px;
+	z-index: 2;
+}
+#stats iframe {
+	position: absolute;
+	top: 50px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	border: 0px;
+	overflow: hidden;
+	max-width: 816px;
 }
