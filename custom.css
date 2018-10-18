@@ -232,11 +232,11 @@ text-decoration: none;
 
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?77ht1l');
-  src:  url('fonts/icomoon.eot?77ht1l#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?77ht1l') format('truetype'),
-    url('fonts/icomoon.woff?77ht1l') format('woff'),
-    url('fonts/icomoon.svg?77ht1l#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?9bmy7e');
+  src:  url('fonts/icomoon.eot?9bmy7e#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?9bmy7e') format('truetype'),
+    url('fonts/icomoon.woff?9bmy7e') format('woff'),
+    url('fonts/icomoon.svg?9bmy7e#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -256,6 +256,18 @@ text-decoration: none;
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-enlarge:before {
+  content: "\e989";
+}
+.icon-shrink:before {
+  content: "\e98a";
+}
+.icon-volume-high:before {
+  content: "\ea26";
+}
+.icon-volume-mute:before {
+  content: "\e905";
+}
 .icon-globe:before {
   content: "\e900";
 }
