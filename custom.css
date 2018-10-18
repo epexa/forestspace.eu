@@ -171,7 +171,7 @@ svg * {
 	display: none;
 }
 
-#fullscreen-in-btn, #fullscreen-out-btn, #music-off-btn, #music-on-btn, #btn-map-menu, #authors-btn, #about-btn, #map360-btn, #stats-btn, #arch-photos-btn {
+#fullscreen-in-btn, #fullscreen-out-btn, #music-off-btn, #music-on-btn, #btn-map-menu, #authors-btn, #about-btn, #map360-btn, #stats-btn, #arch-photos-btn, #places-power-btn {
 	display: none;
 	margin: 0 1rem;
 	z-index: 4;
@@ -410,7 +410,7 @@ text-decoration: none;
 	color: #2a9fd6;
 }
 
-#yaga, #puschevik, #vodyanoi, #zazovka, #ulya, #leshij, #liho, #pasechnik, #rusalki, #vegetandry {
+#yaga, #puschevik, #vodyanoi, #zazovka, #ulya, #leshij, #liho, #pasechnik, #rusalki, #vegetandry, #kamen-sledovik, #kamen-zhertvennik, #kamen-sledovik {
 	display: none;
 }
 

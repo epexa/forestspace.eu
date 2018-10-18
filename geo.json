@@ -245,6 +245,17 @@
       },
       "type": "Feature",
       "properties": {
+		"type": "video",
+		"video": "SzMBIu8XLc0"
+      }
+    },
+	{
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 23.907514, 52.722352 ]
+      },
+      "type": "Feature",
+      "properties": {
 		"type": "photo",
 		"name": "simona-kossak",
 		"photo": "simona-kossak.jpg"
@@ -272,6 +283,54 @@
 		"type": "photo",
 		"name": "tsars-hunting-lodge",
 		"photo": "tsars-hunting-lodge.jpg"
+      }
+    },
+	{
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 24.5334, 53.3988 ]
+      },
+      "type": "Feature",
+      "properties": {
+		"type": "power",
+        "name": "kamen-sledovik",
+		"video": "-6P0Pqz3W9E",
+		"audio": {
+			"ru": "516145236",
+			"pl": "516145236"
+		}
+      }
+    },
+	{
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 24.0295458, 52.8407994 ]
+      },
+      "type": "Feature",
+      "properties": {
+		"type": "power",
+        "name": "kamen-zhertvennik",
+		"video": "2x09e8yWo1M",
+		"audio": {
+			"ru": "516145245",
+			"pl": "516145245"
+		}
+      }
+    },
+	{
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 24.0373779, 52.5508884 ]
+      },
+      "type": "Feature",
+      "properties": {
+		"type": "power",
+        "name": "kamen-sledovik2",
+		"video": "KFwpJSJ7a8E",
+		"audio": {
+			"ru": "516145230",
+			"pl": "516145230"
+		}
       }
     }
   ]

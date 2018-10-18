@@ -1,4 +1,4 @@
-﻿initHtmlElements([ '#loading', '#start', '#video', '#map', '#fairytale-page', '#sound', '#btn-map', '#fullscreen-in-btn', '#fullscreen-out-btn', '#music-off-btn', '#music-on-btn', '#team', '#authors-btn', '#btn-map-menu', '#logo', '#fairytale-text', '#about', '#about-btn', '#langs', '#map360-btn', '#video-layer-block', '#add-menu', '#stats-btn', '#stats', '#arch-photos-btn', '#photo', '#photo img', '#photo h2' ]);
+﻿initHtmlElements([ '#loading', '#start', '#video', '#map', '#fairytale-page', '#sound', '#btn-map', '#fullscreen-in-btn', '#fullscreen-out-btn', '#music-off-btn', '#music-on-btn', '#team', '#authors-btn', '#btn-map-menu', '#logo', '#fairytale-text', '#about', '#about-btn', '#langs', '#map360-btn', '#video-layer-block', '#add-menu', '#stats-btn', '#stats', '#arch-photos-btn', '#photo', '#photo img', '#photo h2', '#places-power-btn' ]);
 
 var soundWidget = SC.Widget('sound');
 
@@ -130,7 +130,7 @@ var initMap = function() {
 			streetViewControl: false,
 			zoomControl: false
 		});
-		map.data.loadGeoJson('geo.json?201810181410');
+		map.data.loadGeoJson('geo.json?201810181550');
 		mapSetStyle();
 		map.data.addListener('click', function(event) {
 			switch (event.feature.getProperty('type')) {
@@ -140,6 +140,12 @@ var initMap = function() {
 					mythAudio = event.feature.getProperty('audio')[currentLang];
 					mythVideo = event.feature.getProperty('video');
 					window.location.hash = 'fairytale/' + name;
+				} break;
+				case 'power': {
+					const name = event.feature.getProperty('name');
+					mythAudio = event.feature.getProperty('audio')[currentLang];
+					mythVideo = event.feature.getProperty('video');
+					window.location.hash = 'place-power/' + name;
 				} break;
 				case 'video': {
 					mythVideo = event.feature.getProperty('video');
@@ -169,6 +175,10 @@ var mapSetStyle = function() {
 				case 'myth': {
 					if (mapTypeShow != 'myths') markerStyle.visible = false;
 					markerStyle.icon.url = 'img/myth_icons/' + feature.getProperty('name') + '.png';
+				} break;
+				case 'power': {
+					if (mapTypeShow != 'places-power') markerStyle.visible = false;
+					markerStyle.icon.url = 'img/places-power_icons/' + feature.getProperty('name') + '.png';
 				} break;
 				case 'video': {
 					if (mapTypeShow != '360') markerStyle.visible = false;
@@ -249,7 +259,7 @@ window.addEventListener('hashchange', function() {
 		var params = hash.split('/');
 		if (params[1]) {
 			switch (params[0]) {
-				case 'fairytale': {
+				case 'fairytale': case 'place-power': {
 					console.log('fairytale', params[1]);
 					$videoLayerBlock.style.display = 'block';
 					$map.style.display = 'none';
@@ -342,10 +352,17 @@ window.addEventListener('hashchange', function() {
 		}
 		else {
 			switch (params[0]) {
-				case 'map': case '360': case 'archival-photos': {
+				case 'map': case '360': case 'archival-photos': case 'places-power': {
 					//map.setCenter({ lat: 52.7, lng: 23.9 });
 					if (params[0] == 'map') {
 						mapTypeShow = 'myths';
+						mapSetStyle();
+						$map360Btn.style.display = 'inline-block';
+						$archPhotosBtn.style.display = 'inline-block';
+						$btnMapMenu.style.display = 'none';
+					}
+					else if (params[0] == 'places-power') {
+						mapTypeShow = 'places-power';
 						mapSetStyle();
 						$map360Btn.style.display = 'inline-block';
 						$archPhotosBtn.style.display = 'inline-block';
@@ -365,6 +382,7 @@ window.addEventListener('hashchange', function() {
 						$map360Btn.style.display = 'inline-block';
 						$archPhotosBtn.style.display = 'none';
 					}
+					$placesPowerBtn.style.display = 'inline-block';
 					$addMenu.style.display = 'block';
 					$authorsBtn.style.display = 'inline-block';
 					$aboutBtn.style.display = 'inline-block';
