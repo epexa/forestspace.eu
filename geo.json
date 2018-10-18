@@ -237,6 +237,42 @@
 		"type": "video",
 		"video": "v5xX0OISRsc"
       }
+    },
+	{
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 23.907514, 52.722352 ]
+      },
+      "type": "Feature",
+      "properties": {
+		"type": "photo",
+		"name": "simona-kossak",
+		"photo": "simona-kossak.jpg"
+      }
+    },
+	{
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 23.906339, 52.727292 ]
+      },
+      "type": "Feature",
+      "properties": {
+		"type": "photo",
+		"name": "simona-kossak2",
+		"photo": "simona-kossak_2.jpg"
+      }
+    },
+	{
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 23.873217, 52.690315 ]
+      },
+      "type": "Feature",
+      "properties": {
+		"type": "photo",
+		"name": "tsars-hunting-lodge",
+		"photo": "tsars-hunting-lodge.jpg"
+      }
     }
   ]
 }

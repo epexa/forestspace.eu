@@ -171,7 +171,7 @@ svg * {
 	display: none;
 }
 
-#fullscreen-in-btn, #fullscreen-out-btn, #music-off-btn, #music-on-btn, #btn-map-menu, #authors-btn, #about-btn, #map360-btn, #stats-btn {
+#fullscreen-in-btn, #fullscreen-out-btn, #music-off-btn, #music-on-btn, #btn-map-menu, #authors-btn, #about-btn, #map360-btn, #stats-btn, #arch-photos-btn {
 	display: none;
 	margin: 0 1rem;
 	z-index: 4;
@@ -467,4 +467,14 @@ text-decoration: none;
 	border: 0px;
 	overflow: hidden;
 	max-width: 816px;
+}
+
+#photo {
+	display: none;
+}
+#photo img {
+	width: 100%;	
+}
+#photo h2 {
+	text-align: center;
 }

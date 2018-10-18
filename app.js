@@ -1,4 +1,4 @@
-﻿initHtmlElements([ '#loading', '#start', '#video', '#map', '#fairytale-page', '#sound', '#btn-map', '#fullscreen-in-btn', '#fullscreen-out-btn', '#music-off-btn', '#music-on-btn', '#team', '#authors-btn', '#btn-map-menu', '#logo', '#fairytale-text', '#about', '#about-btn', '#langs', '#map360-btn', '#video-layer-block', '#add-menu', '#stats-btn', '#stats' ]);
+﻿initHtmlElements([ '#loading', '#start', '#video', '#map', '#fairytale-page', '#sound', '#btn-map', '#fullscreen-in-btn', '#fullscreen-out-btn', '#music-off-btn', '#music-on-btn', '#team', '#authors-btn', '#btn-map-menu', '#logo', '#fairytale-text', '#about', '#about-btn', '#langs', '#map360-btn', '#video-layer-block', '#add-menu', '#stats-btn', '#stats', '#arch-photos-btn', '#photo', '#photo img', '#photo h2' ]);
 
 var soundWidget = SC.Widget('sound');
 
@@ -115,6 +115,7 @@ var initFullscreenInBtn = function() {
 
 var mythAudio;
 var mythVideo;
+var photoUrl;
 
 var map;
 
@@ -129,7 +130,7 @@ var initMap = function() {
 			streetViewControl: false,
 			zoomControl: false
 		});
-		map.data.loadGeoJson('geo.json');
+		map.data.loadGeoJson('geo.json?201810181410');
 		mapSetStyle();
 		map.data.addListener('click', function(event) {
 			switch (event.feature.getProperty('type')) {
@@ -145,7 +146,9 @@ var initMap = function() {
 					window.location.hash = 'video360/' + mythVideo;
 				} break;
 				case 'photo': {
-					//
+					const name = event.feature.getProperty('name');
+					photoUrl = event.feature.getProperty('photo');
+					window.location.hash = 'photo/' + name;
 				} break;
 			}
 		});
@@ -172,7 +175,7 @@ var mapSetStyle = function() {
 					markerStyle.icon.url = 'img/video_360.png';
 				} break;
 				case 'photo': {
-					if (mapTypeShow != '360') markerStyle.visible = false;
+					if (mapTypeShow != '360' && mapTypeShow != 'photo') markerStyle.visible = false;
 					markerStyle.icon.url = 'img/photo_360.png';
 				} break;
 			}
@@ -310,23 +313,57 @@ window.addEventListener('hashchange', function() {
 					$statsBtn.style.display = 'none';
 					initFullscreenInBtn();
 				}; break;
+				case 'photo': {
+					console.log('photo', params[1]);
+					$archPhotosBtn.style.display = 'inline-block';
+					$videoLayerBlock.style.display = 'none';
+					$map.style.display = 'none';
+					$start.style.display = 'none';
+					$logo.style.display = 'none';
+					$team.style.display = 'none';
+					$about.style.display = 'none';
+					$addMenu.style.display = 'none';
+					$fairytalePage.style.display = 'none';
+					$photo.style.display = 'block';
+					$photoImg.src = 'img/archival-photos/' + photoUrl;
+					$photoH2.innerHTML = i18next.t(params[1]);;
+					soundWidget.bind(SC.Widget.Events.READY, function() {
+						soundWidget.pause();
+					});
+					$musicOffBtn.style.display = 'none';
+					$musicOnBtn.style.display = 'none';
+					$btnMapMenu.style.display = 'none';
+					$map360Btn.style.display = 'none';
+					$stats.style.display = 'none';
+					$statsBtn.style.display = 'none';
+					initFullscreenInBtn();
+				}; break;
 			}
 		}
 		else {
 			switch (params[0]) {
-				case 'map': case '360': {
+				case 'map': case '360': case 'archival-photos': {
 					//map.setCenter({ lat: 52.7, lng: 23.9 });
 					if (params[0] == 'map') {
 						mapTypeShow = 'myths';
 						mapSetStyle();
 						$map360Btn.style.display = 'inline-block';
+						$archPhotosBtn.style.display = 'inline-block';
 						$btnMapMenu.style.display = 'none';
 					}
-					else {
+					else if (params[0] == '360') {
 						mapTypeShow = '360';
 						mapSetStyle();
 						$btnMapMenu.style.display = 'inline-block';
+						$archPhotosBtn.style.display = 'inline-block';
 						$map360Btn.style.display = 'none';
+					}
+					else {
+						mapTypeShow = 'photo';
+						mapSetStyle();
+						$btnMapMenu.style.display = 'inline-block';
+						$map360Btn.style.display = 'inline-block';
+						$archPhotosBtn.style.display = 'none';
 					}
 					$addMenu.style.display = 'block';
 					$authorsBtn.style.display = 'inline-block';
