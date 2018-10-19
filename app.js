@@ -267,6 +267,7 @@ window.addEventListener('hashchange', function() {
 					$logo.style.display = 'none';
 					$team.style.display = 'none';
 					$about.style.display = 'none';
+					$photo.style.display = 'none';
 					$addMenu.style.display = 'none';
 					$map360Btn.style.display = 'none';
 					$stats.style.display = 'none';
@@ -309,6 +310,7 @@ window.addEventListener('hashchange', function() {
 					$logo.style.display = 'none';
 					$team.style.display = 'none';
 					$about.style.display = 'none';
+					$photo.style.display = 'none';
 					$addMenu.style.display = 'none';
 					$fairytalePage.style.display = 'none';
 					if (player) player.loadVideoById(mythVideo);
@@ -394,6 +396,7 @@ window.addEventListener('hashchange', function() {
 					$start.style.display = 'none';
 					$team.style.display = 'none';
 					$about.style.display = 'none';
+					$photo.style.display = 'none';
 					$stats.style.display = 'none';
 					$btnMap.style.display = 'none';
 					if (player) player.stopVideo();
@@ -412,6 +415,7 @@ window.addEventListener('hashchange', function() {
 					$aboutBtn.style.display = 'inline-block';
 					$map360Btn.style.display = 'inline-block';
 					$about.style.display = 'none';
+					$photo.style.display = 'none';
 					$authorsBtn.style.display = 'none';
 					$logo.style.display = 'none';
 					$map.style.display = 'none';
@@ -438,6 +442,7 @@ window.addEventListener('hashchange', function() {
 					$authorsBtn.style.display = 'inline-block';
 					$map360Btn.style.display = 'inline-block';
 					$team.style.display = 'none';
+					$photo.style.display = 'none';
 					$aboutBtn.style.display = 'none';
 					$logo.style.display = 'none';
 					$map.style.display = 'none';
@@ -464,6 +469,7 @@ window.addEventListener('hashchange', function() {
 					$map360Btn.style.display = 'inline-block';
 					$aboutBtn.style.display = 'inline-block';
 					$team.style.display = 'none';
+					$photo.style.display = 'none';
 					$logo.style.display = 'none';
 					$map.style.display = 'none';
 					$start.style.display = 'none';
