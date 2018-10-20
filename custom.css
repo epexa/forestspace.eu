@@ -10,13 +10,26 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: "Slavianskiy-Regular";
+  src: url("./fonts/slavianskiy.eot"); /* IE9 Compat Modes */
+  src: url("./fonts/slavianskiy.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("./fonts/slavianskiy.otf") format("opentype"), /* Open Type Font */
+    url("./fonts/slavianskiy.svg") format("svg"), /* Legacy iOS */
+    url("./fonts/slavianskiy.ttf") format("truetype"), /* Safari, Android, iOS */
+    url("./fonts/slavianskiy.woff") format("woff"), /* Modern Browsers */
+    url("./fonts/slavianskiy.woff2") format("woff2"); /* Modern Browsers */
+  font-weight: normal;
+  font-style: normal;
+}
+
 html {
   position: relative;
   min-height: 100%;
 }
 
 body {
-  font-family: "ColumbinaAltCap" !important;
+  font-family: "Slavianskiy-Regular" !important;
 }
 
 /* body {
@@ -119,7 +132,7 @@ svg * {
 	display: none;
 }
 
-#fairytale-page {
+#myth-page {
 	z-index: 3;
 	position: fixed;
 	top: 0;
@@ -163,7 +176,7 @@ svg * {
     z-index: 4;
 }
 
-#btn-map {
+#map-myths-btn {
 	z-index: 3;
 	position: fixed;
 	bottom: 9rem;
@@ -171,7 +184,7 @@ svg * {
 	display: none;
 }
 
-#fullscreen-in-btn, #fullscreen-out-btn, #music-off-btn, #music-on-btn, #btn-map-menu, #authors-btn, #about-btn, #map360-btn, #stats-btn, #arch-photos-btn, #places-power-btn {
+#fullscreen-in-btn, #fullscreen-out-btn, #music-off-btn, #music-on-btn, #map-myths-menu-btn, #authors-btn, #about-btn, #map360-btn, #stats-btn, #arch-photos-btn, #places-power-btn, #donate-btn {
 	display: none;
 	margin: 0 1rem;
 	z-index: 4;
@@ -196,38 +209,35 @@ a[href^="https://maps.google.com/maps"]{display:none!important}.gmnoprint a,.gmn
     margin: 50px auto;
 }
 #team .team-photo {
-	    float: left;
+	float: left;
 }
 #team .team-photo img {
 	width: 150px;
 }
 #team .team-description {
-	    float: left;
-		
-     padding-left: 1rem;
+	float: left;
+	padding-left: 1rem;
 }
 #team .team-description p {
-font-size: 1.5rem;	
+	font-size: 1.5rem;	
 }
 #team .team-links {
-	    display: block;
-    float: left;
-	
+	display: block;
+	float: left;
 }
 #team .team-links ul {
-		    float: left;
-    list-style: none;
-	    padding: 0;
-		    margin: 0;
+	float: left;
+	list-style: none;
+	padding: 0;
+	margin: 0;
 }
 #team .team-links ul li {
 	float: left;
-	    font-size: 2rem;
-		    margin: 0 0.5rem;
+	font-size: 2rem;
+	margin: 0 0.5rem;
 }
 #team .team-links ul li a {
-text-decoration: none;	
-	
+	text-decoration: none;	
 }
 
 @font-face {
@@ -403,9 +413,10 @@ text-decoration: none;
 }
 #logo h1 {
 	line-height: 1;
+	font-family: "ColumbinaAltCap";
 }
 #logo span {
-	font-size: 1.6rem;
+	font-size: 1.7rem;
 	line-height: 0.8;
 	color: #2a9fd6;
 }
@@ -477,4 +488,46 @@ text-decoration: none;
 }
 #photo h2 {
 	text-align: center;
+}
+
+#donate {
+	display: none;
+	width: 80%;
+	margin: 5rem auto;
+	font-size: 1.5rem;
+}
+#donate #sponsors {
+	float: left;
+	margin: 2rem 0 4rem 0;
+	text-align: center;
+	width: 100%;
+}
+#donate #sponsors h4 {
+	margin-bottom: 2rem;
+}
+#donate .sponsor-profile {
+	float: left;
+    margin: 0 auto;
+	padding: 0 1rem;
+    width: 20%;
+}
+#donate .sponsor-profile img {
+	margin-bottom: 1rem;
+	width: 181px;
+}
+#donate .sponsor-profile p {
+	font-size: 1.5rem;	
+}
+#donate #sponsors ul {
+	/* list-style: none; */
+	padding: 0;
+	margin: 0;
+}
+#donate #sponsors ul li {
+    display: inline-block;
+	font-size: 1.4rem;
+	margin: 0 0.5rem;
+}
+#donate #sponsors ul li a {
+	text-decoration: none;	
 }
