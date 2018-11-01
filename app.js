@@ -130,7 +130,7 @@ var initMap = function() {
 			streetViewControl: false,
 			zoomControl: false
 		});
-		map.data.loadGeoJson('geo.json?201810181550');
+		map.data.loadGeoJson('geo.json?201811011530');
 		mapSetStyle();
 		map.data.addListener('click', function(event) {
 			switch (event.feature.getProperty('type')) {
