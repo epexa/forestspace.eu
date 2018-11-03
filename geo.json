@@ -397,13 +397,85 @@
 	{
       "geometry": {
         "type": "Point",
-        "coordinates": [ 23.873217, 52.690315 ]
+        "coordinates": [ 23.883217, 52.690315 ]
       },
       "type": "Feature",
       "properties": {
 		"type": "photo",
 		"name": "tsars-hunting-lodge",
 		"photo": "tsars-hunting-lodge.jpg"
+      }
+    },
+	{
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 23.837132, 52.688899 ]
+      },
+      "type": "Feature",
+      "properties": {
+		"type": "photo",
+		"name": "sbory",
+		"photo": "sbory.jpg"
+      }
+    },
+	{
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 23.873178, 52.690183 ]
+      },
+      "type": "Feature",
+      "properties": {
+		"type": "photo",
+		"name": "carskij-dvorec-v-belovezhe",
+		"photo": "carskij-dvorec-v-belovezhe.jpg"
+      }
+    },
+	{
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 23.870617, 52.720922 ]
+      },
+      "type": "Feature",
+      "properties": {
+		"type": "photo",
+		"name": "olxovyj-les",
+		"photo": "olxovyj-les.jpg"
+      }
+    },
+	{
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 23.857988, 52.718073 ]
+      },
+      "type": "Feature",
+      "properties": {
+		"type": "photo",
+		"name": "ignacij-moscickij",
+		"photo": "ignacij-moscickij.jpg"
+      }
+    },
+	{
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 23.839371, 52.714545 ]
+      },
+      "type": "Feature",
+      "properties": {
+		"type": "photo",
+		"name": "carskaya-oxota",
+		"photo": "carskaya-oxota.jpg"
+      }
+    },
+	{
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 23.912009, 52.724009 ]
+      },
+      "type": "Feature",
+      "properties": {
+		"type": "photo",
+		"name": "simona-kossak_3",
+		"photo": "simona-kossak_3.jpg"
       }
     },
 	{
