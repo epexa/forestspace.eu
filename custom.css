@@ -167,6 +167,7 @@ svg * {
 }
 #sound.invis {
 	opacity: 0;
+	bottom: -110px;
 }
 
 #btns {

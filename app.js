@@ -74,7 +74,9 @@ var loader = new Vivus('start', {
 			fullScreen();
 			$mythPage.style.display = 'none';
 			//$sound.style.display = 'none';
-			playSound('499380882', true);
+			soundWidget.bind(SC.Widget.Events.READY, function() {
+				playSound('499380882', true);
+			});
 			$logo.style.width = 'initial';
 			$logo.style.left = '20px';
 		});
@@ -550,11 +552,11 @@ window.addEventListener('hashchange', function() {
 					$testBtn.style.display = 'none';
 					if (player) player.stopVideo();
 					initFullscreenInBtn();
-					/* soundWidget.bind(SC.Widget.Events.READY, function() {
+					soundWidget.bind(SC.Widget.Events.READY, function() {
 						soundWidget.getCurrentSound(function(sound) {
-							if (sound.id != 513805107) playSound(513805107, true);
+							if (sound.id != 499380882) playSound(499380882, true);
 						});
-					}); */
+					});
 					$musicOffBtn.style.display = 'inline-block';
 				}; break;
 				case 'donate': {
