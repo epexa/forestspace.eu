@@ -184,7 +184,7 @@ svg * {
 	display: none;
 }
 
-#fullscreen-in-btn, #fullscreen-out-btn, #music-off-btn, #music-on-btn, #map-myths-menu-btn, #authors-btn, #about-btn, #map360-btn, #stats-btn, #arch-photos-btn, #places-power-btn, #donate-btn {
+#fullscreen-in-btn, #fullscreen-out-btn, #music-off-btn, #music-on-btn, #map-myths-menu-btn, #authors-btn, #about-btn, #map360-btn, #stats-btn, #test-btn, #arch-photos-btn, #places-power-btn, #donate-btn {
 	display: none;
 	margin: 0 1rem;
 	z-index: 4;
@@ -478,6 +478,19 @@ a[href^="https://maps.google.com/maps"]{display:none!important}.gmnoprint a,.gmn
 	border: 0px;
 	overflow: hidden;
 	max-width: 816px;
+}
+
+#test {
+	/* background: rgb(14, 36, 47); */
+	display: none;
+}
+#test iframe {
+	display: block;
+	margin: 80px auto;
+	border: 0px;
+	width: 100%;
+	height: 600px;
+	max-width: 800px
 }
 
 #photo {

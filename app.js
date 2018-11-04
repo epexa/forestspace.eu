@@ -1,6 +1,8 @@
-﻿initHtmlElements([ '#loading', '#start', '#video', '#map', '#myth-page', '#sound', '#map-myths-btn', '#fullscreen-in-btn', '#fullscreen-out-btn', '#music-off-btn', '#music-on-btn', '#team', '#authors-btn', '#map-myths-menu-btn', '#logo', '#myth-text', '#about', '#about-btn', '#langs', '#map360-btn', '#video-layer-block', '#add-menu', '#stats-btn', '#stats', '#arch-photos-btn', '#photo', '#photo img', '#photo h2', '#places-power-btn', '#donate-btn', '#donate' ]);
+﻿initHtmlElements([ '#loading', '#start', '#video', '#map', '#myth-page', '#sound', '#map-myths-btn', '#fullscreen-in-btn', '#fullscreen-out-btn', '#music-off-btn', '#music-on-btn', '#team', '#authors-btn', '#map-myths-menu-btn', '#logo', '#myth-text', '#about', '#about-btn', '#langs', '#map360-btn', '#video-layer-block', '#add-menu', '#stats-btn', '#stats', '#arch-photos-btn', '#photo', '#photo img', '#photo h2', '#places-power-btn', '#donate-btn', '#donate', '#test-btn', '#test' ]);
 
 var soundWidget = SC.Widget('sound');
+
+$sound.classList.add('invis');
 
 var player;
 var introVideo = true;
@@ -281,7 +283,9 @@ window.addEventListener('hashchange', function() {
 					$addMenu.style.display = 'none';
 					$map360Btn.style.display = 'none';
 					$stats.style.display = 'none';
+					$test.style.display = 'none';
 					$statsBtn.style.display = 'none';
+					$testBtn.style.display = 'none';
 					$mythPage.style.display = 'block';
 					$mythText.innerHTML = '';
 					if (player) player.loadVideoById(mythVideo);
@@ -334,7 +338,9 @@ window.addEventListener('hashchange', function() {
 					$mapMythsMenuBtn.style.display = 'none';
 					$map360Btn.style.display = 'inline-block';
 					$stats.style.display = 'none';
+					$test.style.display = 'none';
 					$statsBtn.style.display = 'none';
+					$testBtn.style.display = 'none';
 					initFullscreenInBtn();
 				}; break;
 				case 'photo': {
@@ -361,7 +367,9 @@ window.addEventListener('hashchange', function() {
 					$mapMythsMenuBtn.style.display = 'none';
 					$map360Btn.style.display = 'none';
 					$stats.style.display = 'none';
+					$test.style.display = 'none';
 					$statsBtn.style.display = 'none';
+					$testBtn.style.display = 'none';
 					initFullscreenInBtn();
 				}; break;
 			}
@@ -403,6 +411,7 @@ window.addEventListener('hashchange', function() {
 					$authorsBtn.style.display = 'inline-block';
 					$aboutBtn.style.display = 'inline-block';
 					$statsBtn.style.display = 'inline-block';
+					$testBtn.style.display = 'inline-block';
 					$donateBtn.style.display = 'inline-block';
 					$map.style.display = 'block';
 					$logo.style.display = 'block';
@@ -415,6 +424,7 @@ window.addEventListener('hashchange', function() {
 					$about.style.display = 'none';
 					$photo.style.display = 'none';
 					$stats.style.display = 'none';
+					$test.style.display = 'none';
 					$mapMythsBtn.style.display = 'none';
 					if (player) player.stopVideo();
 					initFullscreenInBtn();
@@ -433,6 +443,7 @@ window.addEventListener('hashchange', function() {
 					$map360Btn.style.display = 'inline-block';
 					$donateBtn.style.display = 'inline-block';
 					$statsBtn.style.display = 'inline-block';
+					$testBtn.style.display = 'inline-block';
 					$videoLayerBlock.style.display = 'none';
 					$about.style.display = 'none';
 					$donate.style.display = 'none';
@@ -444,6 +455,7 @@ window.addEventListener('hashchange', function() {
 					$mythPage.style.display = 'none';
 					$mapMythsBtn.style.display = 'none';
 					$stats.style.display = 'none';
+					$test.style.display = 'none';
 					if (player) player.stopVideo();
 					initFullscreenInBtn();
 					soundWidget.bind(SC.Widget.Events.READY, function() {
@@ -463,6 +475,7 @@ window.addEventListener('hashchange', function() {
 					$map360Btn.style.display = 'inline-block';
 					$donateBtn.style.display = 'inline-block';
 					$statsBtn.style.display = 'inline-block';
+					$testBtn.style.display = 'inline-block';
 					$videoLayerBlock.style.display = 'none';
 					$team.style.display = 'none';
 					$donate.style.display = 'none';
@@ -474,6 +487,7 @@ window.addEventListener('hashchange', function() {
 					$mythPage.style.display = 'none';
 					$mapMythsBtn.style.display = 'none';
 					$stats.style.display = 'none';
+					$test.style.display = 'none';
 					if (player) player.stopVideo();
 					initFullscreenInBtn();
 					soundWidget.bind(SC.Widget.Events.READY, function() {
@@ -485,6 +499,7 @@ window.addEventListener('hashchange', function() {
 				}; break;
 				case 'statistics': {
 					$stats.style.display = 'block';
+					$test.style.display = 'none';
 					$about.style.display = 'none';
 					$mapMythsMenuBtn.style.display = 'inline-block';
 					$addMenu.style.display = 'block';
@@ -492,6 +507,7 @@ window.addEventListener('hashchange', function() {
 					$map360Btn.style.display = 'inline-block';
 					$aboutBtn.style.display = 'inline-block';
 					$donateBtn.style.display = 'inline-block';
+					$testBtn.style.display = 'inline-block';
 					$videoLayerBlock.style.display = 'none';
 					$team.style.display = 'none';
 					$donate.style.display = 'none';
@@ -502,6 +518,36 @@ window.addEventListener('hashchange', function() {
 					$mythPage.style.display = 'none';
 					$mapMythsBtn.style.display = 'none';
 					$statsBtn.style.display = 'none';
+					if (player) player.stopVideo();
+					initFullscreenInBtn();
+					/* soundWidget.bind(SC.Widget.Events.READY, function() {
+						soundWidget.getCurrentSound(function(sound) {
+							if (sound.id != 513805107) playSound(513805107, true);
+						});
+					}); */
+					$musicOffBtn.style.display = 'inline-block';
+				}; break;
+				case 'test': {
+					$test.style.display = 'block';
+					$stats.style.display = 'none';
+					$about.style.display = 'none';
+					$mapMythsMenuBtn.style.display = 'inline-block';
+					$addMenu.style.display = 'block';
+					$authorsBtn.style.display = 'inline-block';
+					$map360Btn.style.display = 'inline-block';
+					$aboutBtn.style.display = 'inline-block';
+					$donateBtn.style.display = 'inline-block';
+					$statsBtn.style.display = 'inline-block';
+					$videoLayerBlock.style.display = 'none';
+					$team.style.display = 'none';
+					$donate.style.display = 'none';
+					$photo.style.display = 'none';
+					$logo.style.display = 'none';
+					$map.style.display = 'none';
+					$start.style.display = 'none';
+					$mythPage.style.display = 'none';
+					$mapMythsBtn.style.display = 'none';
+					$testBtn.style.display = 'none';
 					if (player) player.stopVideo();
 					initFullscreenInBtn();
 					/* soundWidget.bind(SC.Widget.Events.READY, function() {
@@ -522,6 +568,7 @@ window.addEventListener('hashchange', function() {
 					$statsBtn.style.display = 'inline-block';
 					$archPhotosBtn.style.display = 'inline-block';
 					$placesPowerBtn.style.display = 'inline-block';
+					$testBtn.style.display = 'inline-block';
 					$videoLayerBlock.style.display = 'none';
 					$donateBtn.style.display = 'none';
 					$team.style.display = 'none';
@@ -532,6 +579,7 @@ window.addEventListener('hashchange', function() {
 					$mythPage.style.display = 'none';
 					$mapMythsBtn.style.display = 'none';
 					$stats.style.display = 'none';
+					$test.style.display = 'none';
 					if (player) player.stopVideo();
 					initFullscreenInBtn();
 					soundWidget.bind(SC.Widget.Events.READY, function() {
