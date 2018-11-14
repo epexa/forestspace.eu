@@ -603,14 +603,16 @@ window.dispatchEvent(new CustomEvent('hashchange'));
 $loading.style.display = 'none';
 
 Array.from(document.getElementsByClassName('team-profile')).forEach(function(element) {
-	var oldPhoto;
-	element.addEventListener('mouseover', function() {
-		oldPhoto = element.querySelector('img').src;
-		element.querySelector('img').src =  element.dataset.photo;
-	});
-	element.addEventListener('mouseout', function() {
-		element.querySelector('img').src = oldPhoto;
-	});
+	if (element.dataset.photo) {
+		var oldPhoto;
+		element.addEventListener('mouseover', function() {
+				oldPhoto = element.querySelector('img').src;
+				element.querySelector('img').src =  element.dataset.photo;
+		});
+		element.addEventListener('mouseout', function() {
+			element.querySelector('img').src = oldPhoto;
+		});
+	}
 });
 
 const langList = [

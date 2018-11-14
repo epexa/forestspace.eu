@@ -211,6 +211,7 @@ a[href^="https://maps.google.com/maps"]{display:none!important}.gmnoprint a,.gmn
 }
 #team .team-photo {
 	float: left;
+	width: 150px;
 }
 #team .team-photo img {
 	width: 150px;
@@ -243,11 +244,11 @@ a[href^="https://maps.google.com/maps"]{display:none!important}.gmnoprint a,.gmn
 
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?9bmy7e');
-  src:  url('fonts/icomoon.eot?9bmy7e#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?9bmy7e') format('truetype'),
-    url('fonts/icomoon.woff?9bmy7e') format('woff'),
-    url('fonts/icomoon.svg?9bmy7e#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?sj5s2p');
+  src:  url('fonts/icomoon.eot?sj5s2p#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?sj5s2p') format('truetype'),
+    url('fonts/icomoon.woff?sj5s2p') format('woff'),
+    url('fonts/icomoon.svg?sj5s2p#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -267,32 +268,35 @@ a[href^="https://maps.google.com/maps"]{display:none!important}.gmnoprint a,.gmn
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-enlarge:before {
-  content: "\e989";
+.icon-vk:before {
+  content: "\e909";
 }
-.icon-shrink:before {
-  content: "\e98a";
-}
-.icon-volume-high:before {
-  content: "\ea26";
-}
-.icon-volume-mute:before {
-  content: "\e905";
-}
-.icon-globe:before {
+.icon-facebook:before {
   content: "\e900";
 }
-.icon-github:before {
+.icon-instagram:before {
   content: "\e901";
 }
 .icon-linkedin:before {
   content: "\e902";
 }
-.icon-instagram:before {
+.icon-github:before {
   content: "\e903";
 }
-.icon-facebook:before {
+.icon-globe:before {
   content: "\e904";
+}
+.icon-volume-mute:before {
+  content: "\e905";
+}
+.icon-volume-high:before {
+  content: "\e906";
+}
+.icon-shrink:before {
+  content: "\e907";
+}
+.icon-enlarge:before {
+  content: "\e908";
 }
 
 @keyframes lds-spinner {
