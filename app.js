@@ -80,7 +80,6 @@ var loader = new Vivus('start', {
 	//duration: 1000,
 	onReady: function() {
 		loader.play(1, function() {
-			console.log('loader finish');
 		});
 		var $loader = document.getElementById('loader');
 		$loader.addEventListener('click', function() {
@@ -281,7 +280,6 @@ window.addEventListener('hashchange', function() {
 		if (params[1]) {
 			switch (params[0]) {
 				case 'myth': case 'place-power': {
-					console.log('myth', params[1]);
 					$videoLayerBlock.style.display = 'block';
 					$map.style.display = 'none';
 					$archPhotosBtn.style.display = 'none';
@@ -335,7 +333,6 @@ window.addEventListener('hashchange', function() {
 					initFullscreenInBtn();
 				}; break;
 				case 'video360': {
-					console.log('video360', params[1]);
 					$videoLayerBlock.style.display = 'none';
 					$map.style.display = 'none';
 					$start.style.display = 'none';
@@ -363,7 +360,6 @@ window.addEventListener('hashchange', function() {
 					initFullscreenInBtn();
 				}; break;
 				case 'photo': {
-					console.log('photo', params[1]);
 					$archPhotosBtn.style.display = 'inline-block';
 					$videoLayerBlock.style.display = 'none';
 					$map.style.display = 'none';
