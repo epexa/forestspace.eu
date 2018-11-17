@@ -674,3 +674,7 @@ i18next.on('languageChanged', function() {
 var $modalBrowser = new Modal(document.getElementById('modal-browser'));
 var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
 if ( ! isChrome) $modalBrowser.show();
+
+var $modalMobileApp = new Modal(document.getElementById('modal-mobile-app'));
+var md = new MobileDetect(window.navigator.userAgent);
+if (md.mobile()) $modalMobileApp.show();
