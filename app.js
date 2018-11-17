@@ -1,4 +1,4 @@
-﻿initHtmlElements([ '#loading', '#start', '#video', '#map', '#myth-page', '#sound', '#map-myths-btn', '#fullscreen-in-btn', '#fullscreen-out-btn', '#music-off-btn', '#music-on-btn', '#team', '#authors-btn', '#map-myths-menu-btn', '#logo', '#myth-text', '#about', '#about-btn', '#langs', '#map360-btn', '#video-layer-block', '#add-menu', '#stats-btn', '#stats', '#arch-photos-btn', '#photo', '#photo img', '#photo h2', '#places-power-btn', '#donate-btn', '#donate', '#test-btn', '#test' ]);
+﻿initHtmlElements([ '#loading', '#start', '#video', '#map', '#myth-page', '#sound', '#map-myths-btn', '#fullscreen-in-btn', '#fullscreen-out-btn', '#music-off-btn', '#music-on-btn', '#team', '#authors-btn', '#map-myths-menu-btn', '#logo', '#myth-text', '#about', '#about-btn', '#langs', '#map360-btn', '#video-layer-block', '#add-menu', '#stats-btn', '#stats', '#arch-photos-btn', '#photo', '#photo img', '#photo h2', '#places-power-btn', '#donate-btn', '#donate', '#test-btn', '#test', '#mobile-btn' ]);
 
 var soundWidget = SC.Widget('sound');
 
@@ -678,3 +678,8 @@ if ( ! isChrome) $modalBrowser.show();
 var $modalMobileApp = new Modal(document.getElementById('modal-mobile-app'));
 var md = new MobileDetect(window.navigator.userAgent);
 if (md.mobile()) $modalMobileApp.show();
+
+$mobileBtn.addEventListener('click', function() {
+	window.location.hash = 'donate';
+	$modalMobileApp.hide();
+});
