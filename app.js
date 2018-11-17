@@ -671,13 +671,16 @@ i18next.on('languageChanged', function() {
 	$donate.innerHTML = i18next.t('donate');
 });
 
-var $modalBrowser = new Modal(document.getElementById('modal-browser'));
-var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
-if ( ! isChrome) $modalBrowser.show();
-
 var $modalMobileApp = new Modal(document.getElementById('modal-mobile-app'));
 var md = new MobileDetect(window.navigator.userAgent);
 if (md.mobile()) $modalMobileApp.show();
+else {
+	var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+	if ( ! isChrome) {
+		var $modalBrowser = new Modal(document.getElementById('modal-browser'));
+		$modalBrowser.show();
+	}
+}
 
 $mobileBtn.addEventListener('click', function() {
 	window.location.hash = 'donate';
