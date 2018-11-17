@@ -1,5 +1,22 @@
 ﻿initHtmlElements([ '#loading', '#start', '#video', '#map', '#myth-page', '#sound', '#map-myths-btn', '#fullscreen-in-btn', '#fullscreen-out-btn', '#music-off-btn', '#music-on-btn', '#team', '#authors-btn', '#map-myths-menu-btn', '#logo', '#myth-text', '#about', '#about-btn', '#langs', '#map360-btn', '#video-layer-block', '#add-menu', '#stats-btn', '#stats', '#arch-photos-btn', '#photo', '#photo img', '#photo h2', '#places-power-btn', '#donate-btn', '#donate', '#test-btn', '#test', '#mobile-btn' ]);
 
+var md = new MobileDetect(window.navigator.userAgent);
+if (md.mobile()) {
+	var $modalMobileApp = new Modal(document.getElementById('modal-mobile-app'));
+	$modalMobileApp.show();
+	$mobileBtn.addEventListener('click', function() {
+		window.location.hash = '!donate';
+		$modalMobileApp.hide();
+	});
+}
+else {
+	var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+	if ( ! isChrome) {
+		var $modalBrowser = new Modal(document.getElementById('modal-browser'));
+		$modalBrowser.show();
+	}
+}
+
 var soundWidget = SC.Widget('sound');
 
 $sound.classList.add('invis');
@@ -31,7 +48,7 @@ var onYouTubeIframeAPIReady = function() {
 				}
 				if (event.data == YT.PlayerState.ENDED) {
 					if (introVideo) {
-						window.location.hash = 'myths';
+						window.location.hash = '!myths';
 						setTimeout(function() {
 							//map.setZoom(12);
 							animateMapZoomTo(map, 10);
@@ -143,22 +160,22 @@ var initMap = function() {
 					//const position = event.feature.getGeometry().get();
 					mythAudio = event.feature.getProperty('audio')[currentLang];
 					mythVideo = event.feature.getProperty('video');
-					window.location.hash = 'myth/' + name;
+					window.location.hash = '!myth/' + name;
 				} break;
 				case 'power': {
 					const name = event.feature.getProperty('name');
 					mythAudio = event.feature.getProperty('audio')[currentLang];
 					mythVideo = event.feature.getProperty('video');
-					window.location.hash = 'place-power/' + name;
+					window.location.hash = '!place-power/' + name;
 				} break;
 				case 'video': {
 					mythVideo = event.feature.getProperty('video');
-					window.location.hash = 'video360/' + mythVideo;
+					window.location.hash = '!video360/' + mythVideo;
 				} break;
 				case 'photo': {
 					const name = event.feature.getProperty('name');
 					photoUrl = event.feature.getProperty('photo');
-					window.location.hash = 'photo/' + name;
+					window.location.hash = '!photo/' + name;
 				} break;
 			}
 		});
@@ -258,7 +275,7 @@ mythText.stop(); */
 var mythText;
 
 window.addEventListener('hashchange', function() {
-	var hash = window.location.hash.substring(1);
+	var hash = window.location.hash.substring(2);
 	if (hash) {
 		var params = hash.split('/');
 		if (params[1]) {
@@ -669,20 +686,4 @@ i18next.on('languageChanged', function() {
 	}
 	$about.innerHTML = i18next.t('about');
 	$donate.innerHTML = i18next.t('donate');
-});
-
-var $modalMobileApp = new Modal(document.getElementById('modal-mobile-app'));
-var md = new MobileDetect(window.navigator.userAgent);
-if (md.mobile()) $modalMobileApp.show();
-else {
-	var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
-	if ( ! isChrome) {
-		var $modalBrowser = new Modal(document.getElementById('modal-browser'));
-		$modalBrowser.show();
-	}
-}
-
-$mobileBtn.addEventListener('click', function() {
-	window.location.hash = 'donate';
-	$modalMobileApp.hide();
 });
