@@ -670,3 +670,7 @@ i18next.on('languageChanged', function() {
 	$about.innerHTML = i18next.t('about');
 	$donate.innerHTML = i18next.t('donate');
 });
+
+var $modalBrowser = new Modal(document.getElementById('modal-browser'));
+var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+if ( ! isChrome) $modalBrowser.show();
