@@ -549,3 +549,13 @@ a[href^="https://maps.google.com/maps"]{display:none!important}.gmnoprint a,.gmn
 #donate #sponsors ul li a {
 	text-decoration: none;	
 }
+
+.btn-circle {
+	border-radius: 50% !important;
+	font-size: 2rem !important;
+	height: 10rem;
+	width: 10rem;
+	white-space: inherit !important;
+	position: absolute;
+	margin-top: 15%;
+}
