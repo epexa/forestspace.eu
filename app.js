@@ -639,6 +639,7 @@ for (var key in langList) {
 	var $langBtn = document.createElement('img');
 	$langBtn.src = 'img/' + langList[key].lang + '.svg';
 	$langBtn.dataset.lang = langList[key].lang;
+	$langBtn.alt = '';
 	$langBtn.addEventListener('click', function() {
 		i18next.changeLanguage(this.dataset.lang);
 	});
