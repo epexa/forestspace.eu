@@ -488,6 +488,9 @@ a[href^="https://maps.google.com/maps"]{display:none!important}.gmnoprint a,.gmn
 #test {
 	/* background: rgb(14, 36, 47); */
 	display: none;
+	position: absolute;
+	overflow-x: hidden;
+	width: 100%;
 }
 #test iframe {
 	display: block;
@@ -558,4 +561,60 @@ a[href^="https://maps.google.com/maps"]{display:none!important}.gmnoprint a,.gmn
 	white-space: inherit !important;
 	position: absolute;
 	margin-top: 15%;
+}
+
+#want-tshirt, #want-poster {	
+	transition: 1s;
+}
+#want-tshirt {
+	left: 2rem;
+}
+#want-poster {
+	right: 3rem;
+	margin-top: 20%;
+}
+#want-tshirt:hover, #want-poster:hover {
+	height: 15rem;
+	width: 15rem;
+	font-size: 3rem !important;
+}
+#want-tshirt.invis, #want-poster.invis {
+	opacity: 0;
+}
+#want-tshirt.invis {
+	left: -10rem;
+}
+#want-poster.invis {
+	right: -10rem;
+}
+#want-tshirt::before, #want-tshirt::after, #want-poster::before, #want-poster::after {
+	content: '';
+	position: absolute;
+	border: 1px solid #77B300;
+	left: -20px;
+	right: -20px;
+	top: -20px;
+	bottom: -20px;
+	border-radius: 50%;
+	animation: pulse 1.8s linear infinite;
+	opacity: 0;
+}
+#want-tshirt::after, #want-poster::after {
+	animation-delay: .5s;
+}
+#want-poster::before, #want-poster::after {
+	border-color: #9933CC;
+}
+@keyframes pulse {
+	0% {
+		transform: scale(0.5);
+		opacity: 0;
+	}
+	50% {
+		opacity: 1;
+	}
+	100% {
+		transform: scale(1.2);
+		opacity: 0;
+	}
 }

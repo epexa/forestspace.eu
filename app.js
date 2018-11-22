@@ -1,4 +1,4 @@
-﻿initHtmlElements([ '#loading', '#start', '#video', '#map', '#myth-page', '#sound', '#map-myths-btn', '#fullscreen-in-btn', '#fullscreen-out-btn', '#music-off-btn', '#music-on-btn', '#team', '#authors-btn', '#map-myths-menu-btn', '#logo', '#myth-text', '#about', '#about-btn', '#langs', '#map360-btn', '#video-layer-block', '#add-menu', '#stats-btn', '#stats', '#arch-photos-btn', '#photo', '#photo img', '#photo h2', '#places-power-btn', '#donate-btn', '#donate', '#test-btn', '#test', '#mobile-btn' ]);
+﻿initHtmlElements([ '#loading', '#start', '#video', '#map', '#myth-page', '#sound', '#map-myths-btn', '#fullscreen-in-btn', '#fullscreen-out-btn', '#music-off-btn', '#music-on-btn', '#team', '#authors-btn', '#map-myths-menu-btn', '#logo', '#myth-text', '#about', '#about-btn', '#langs', '#map360-btn', '#video-layer-block', '#add-menu', '#stats-btn', '#stats', '#arch-photos-btn', '#photo', '#photo img', '#photo h2', '#places-power-btn', '#donate-btn', '#donate', '#test-btn', '#test', '#mobile-btn', '#want-tshirt', '#want-poster' ]);
 
 var md = new MobileDetect(window.navigator.userAgent);
 if (md.mobile()) {
@@ -571,6 +571,12 @@ window.addEventListener('hashchange', function() {
 						});
 					});
 					$musicOffBtn.style.display = 'inline-block';
+					setTimeout(function() {
+						$wantTshirt.classList.remove('invis');
+					}, 15000);
+					setTimeout(function() {
+						$wantPoster.classList.remove('invis');
+					}, 17000);
 				}; break;
 				case 'donate': {
 					$donate.style.display = 'block';
