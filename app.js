@@ -1,6 +1,6 @@
 ﻿initHtmlElements([ '#loading', '#start', '#video', '#map', '#myth-page', '#sound', '#map-myths-btn', '#fullscreen-in-btn', '#fullscreen-out-btn', '#music-off-btn', '#music-on-btn', '#team', '#authors-btn', '#map-myths-menu-btn', '#logo', '#myth-text', '#about', '#about-btn', '#langs', '#map360-btn', '#video-layer-block', '#add-menu', '#stats-btn', '#stats', '#arch-photos-btn', '#photo', '#photo img', '#photo h2', '#places-power-btn', '#donate-btn', '#donate', '#test-btn', '#test', '#mobile-btn', '#want-tshirt', '#want-poster' ]);
 
-var md = new MobileDetect(window.navigator.userAgent);
+/* var md = new MobileDetect(window.navigator.userAgent);
 if (md.mobile()) {
 	var $modalMobileApp = new Modal(document.getElementById('modal-mobile-app'));
 	$modalMobileApp.show();
@@ -15,6 +15,20 @@ else {
 		var $modalBrowser = new Modal(document.getElementById('modal-browser'));
 		$modalBrowser.show();
 	}
+} */
+
+var bd = browserDetect();
+if (bd.mobile) {
+	var $modalMobileApp = new Modal(document.getElementById('modal-mobile-app'));
+	$modalMobileApp.show();
+	$mobileBtn.addEventListener('click', function() {
+		window.location.hash = '!donate';
+		$modalMobileApp.hide();
+	});
+}
+else if (bd.name == 'ie' || bd.name == 'edge' || (bd.name == 'chrome' && bd.versionNumber < 37) || (bd.name == 'firefox' && bd.versionNumber < 32) || (bd.name == 'opera' && bd.versionNumber < 25) || (bd.name == 'safari' && bd.versionNumber < 11)) {
+	var $modalBrowser = new Modal(document.getElementById('modal-browser'));
+	$modalBrowser.show();
 }
 
 var soundWidget = SC.Widget('sound');
@@ -87,7 +101,7 @@ var loader = new Vivus('start', {
 			//loader.reset().play();
 			$start.style.display = 'none';
 			if (loaded) player.playVideo(); else loaded = true;
-			fullScreen();
+			setFullScreen();
 			$mythPage.style.display = 'none';
 			//$sound.style.display = 'none';
 			soundWidget.bind(SC.Widget.Events.READY, function() {
@@ -104,7 +118,7 @@ var loader = new Vivus('start', {
 
 var docElm = document.documentElement;
 
-var fullScreen = function() {
+var setFullScreen = function() {
 	if (docElm.requestFullscreen) docElm.requestFullscreen();
 	else if (docElm.msRequestFullscreen) {
 		docElm = document.body;
@@ -117,7 +131,7 @@ var fullScreen = function() {
 
 $fullscreenInBtn.addEventListener('click', function() {
 	$fullscreenInBtn.style.display = 'none';
-	fullScreen();
+	setFullScreen();
 });
 
 $fullscreenOutBtn.addEventListener('click', function() {
@@ -155,14 +169,14 @@ var initMap = function() {
 		map.data.addListener('click', function(event) {
 			switch (event.feature.getProperty('type')) {
 				case 'myth': {
-					const name = event.feature.getProperty('name');
-					//const position = event.feature.getGeometry().get();
+					var name = event.feature.getProperty('name');
+					//var position = event.feature.getGeometry().get();
 					mythAudio = event.feature.getProperty('audio')[currentLang];
 					mythVideo = event.feature.getProperty('video');
 					window.location.hash = '!myth/' + name;
 				} break;
 				case 'power': {
-					const name = event.feature.getProperty('name');
+					var name = event.feature.getProperty('name');
 					mythAudio = event.feature.getProperty('audio')[currentLang];
 					mythVideo = event.feature.getProperty('video');
 					window.location.hash = '!place-power/' + name;
@@ -172,7 +186,7 @@ var initMap = function() {
 					window.location.hash = '!video360/' + mythVideo;
 				} break;
 				case 'photo': {
-					const name = event.feature.getProperty('name');
+					var name = event.feature.getProperty('name');
 					photoUrl = event.feature.getProperty('photo');
 					window.location.hash = '!photo/' + name;
 				} break;
@@ -253,7 +267,7 @@ var playSound = function(url, hide, callback) {
 	else $sound.classList.remove('invis');
 }
 
-const teamAnimation = function() {
+var teamAnimation = function() {
 	$team.style.top = window.innerHeight + 'px';
 	move('#team')
 		.duration('60s')
@@ -264,7 +278,7 @@ const teamAnimation = function() {
 }
 
 /* var mythTextTypeStarted = false;
-const mythText = new Typed('#myth-text-output', {
+var mythText = new Typed('#myth-text-output', {
 	stringsElement: '#myth-text',
 	typeSpeed: 50,
 	showCursor: false,
@@ -634,7 +648,7 @@ Array.from(document.getElementsByClassName('team-profile')).forEach(function(ele
 	}
 });
 
-const langList = [
+var langList = [
 	{lang: 'ru', name: 'Русский'}, 
 	{lang: 'pl', name: 'Polski'}
 ];

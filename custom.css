@@ -118,7 +118,15 @@ svg * {
 	/* hack for 1080 https://stackoverflow.com/a/49797759 */
 	width: 200%; 
 	height: 200%;
+	-moz-transform: scale(0.5);
+	-ms-transform: scale(0.5);
+	-webkit-transform: scale(0.5);
+	-o-transform: scale(0.5);
 	transform: scale(0.5);
+	-moz-transform-origin: left top;
+	-ms-transform-origin: left top;
+	-webkit-transform-origin: left top;
+	-o-transform-origin: left top;
 	transform-origin: left top;
 }
 
