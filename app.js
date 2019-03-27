@@ -50,7 +50,7 @@ var onYouTubeIframeAPIReady = function() {
 			onStateChange: function(event) {
 				$loading.style.display = 'none';
 				if (event.data == YT.PlayerState.PLAYING) {
-					if (event.target.j.videoData.video_id == 'YG25qmmSEHg') introVideo = true; else introVideo = false;
+					if (event.target.getVideoData().video_id == 'YG25qmmSEHg') introVideo = true; else introVideo = false;
 					if ( ! loaded && introVideo) {
 						loaded = true;
 						player.pauseVideo();
@@ -153,6 +153,8 @@ var photoUrl;
 
 var map;
 
+var currentObject = {};
+
 var initMap = function() {
 	//document.addEventListener('DOMContentLoaded', function() {
 		map = new google.maps.Map($map, {
@@ -164,7 +166,14 @@ var initMap = function() {
 			streetViewControl: false,
 			zoomControl: false
 		});
-		map.data.loadGeoJson('geo.json?201811031800');
+		map.data.loadGeoJson('geo.json?201811031800', null, function(geoObjects) {
+			geoObjects.forEach(function(element) {
+				if (currentObject.type == element.l.type && currentObject.name == element.l.name) {
+					mythAudio = element.l.audio[currentLang];
+					mythVideo = element.l.video;
+				}
+			});
+		});
 		mapSetStyle();
 		map.data.addListener('click', function(event) {
 			switch (event.feature.getProperty('type')) {
@@ -287,11 +296,40 @@ var mythText = new Typed('#myth-text-output', {
 mythText.stop(); */
 var mythText;
 
+var playAudioAndVideo = function() {
+	if (mythAudio && mythVideo && player && player.loadVideoById) {
+		player.loadVideoById(mythVideo);
+		soundWidget.bind(SC.Widget.Events.READY, function() {
+			playSound(mythAudio, false, function() {
+				/* if ( ! mythTextTypeStarted) {
+					mythTextTypeStarted = true;
+					setTimeout(function() {
+						mythText.start();
+					}, 1000);
+				}
+				else mythText.reset(); */
+				//$mythText.innerHTML = document.getElementById(params[1]).innerHTML;
+				$mythText.innerHTML = i18next.t(currentObject.name);
+				if (mythText) mythText.destroy();
+				mythText = new Typed('#myth-text-output', {
+					stringsElement: '#myth-text',
+					typeSpeed: 50,
+					showCursor: false,
+					backDelay: 0
+				});
+				mythText.reset();
+			});
+		});
+	}
+	else setTimeout(playAudioAndVideo, 100);
+}
+
 window.addEventListener('hashchange', function() {
 	var hash = window.location.hash.substring(2);
 	if (hash) {
 		var params = hash.split('/');
 		if (params[1]) {
+			currentObject = { type: params[0], name: params[1] };
 			switch (params[0]) {
 				case 'myth': case 'place-power': {
 					$videoLayerBlock.style.display = 'block';
@@ -319,32 +357,11 @@ window.addEventListener('hashchange', function() {
 					$testBtn.style.display = 'none';
 					$mythPage.style.display = 'block';
 					$mythText.innerHTML = '';
-					if (player) player.loadVideoById(mythVideo);
-					soundWidget.bind(SC.Widget.Events.READY, function() {
-						playSound(mythAudio, false, function() {
-							/* if ( ! mythTextTypeStarted) {
-								mythTextTypeStarted = true;
-								setTimeout(function() {
-									mythText.start();
-								}, 1000);
-							}
-							else mythText.reset(); */
-							//$mythText.innerHTML = document.getElementById(params[1]).innerHTML;
-							$mythText.innerHTML = i18next.t(params[1]);
-							if (mythText) mythText.destroy();
-							mythText = new Typed('#myth-text-output', {
-								stringsElement: '#myth-text',
-								typeSpeed: 50,
-								showCursor: false,
-								backDelay: 0
-							});
-							mythText.reset();
-						});
-					});
 					$musicOffBtn.style.display = 'none';
 					$musicOnBtn.style.display = 'none';
 					$mapMythsMenuBtn.style.display = 'none';
 					initFullscreenInBtn();
+					playAudioAndVideo();
 				}; break;
 				case 'video360': {
 					$videoLayerBlock.style.display = 'none';
