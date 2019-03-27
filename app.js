@@ -256,7 +256,7 @@ $musicOnBtn.addEventListener('click', function() {
 	});
 });
 
-var playSound = function(url, hide, callback) {
+var playSound = function(url, hide, disableAutoPlay, callback) {
 	soundWidget.load('https://api.soundcloud.com/tracks/' + url + '&color=%232A9FD6', {
 		//color: '%232A9FD6',
 		auto_play: false,
@@ -268,7 +268,7 @@ var playSound = function(url, hide, callback) {
 		visual: false,
 		show_artwork: false,
 		callback: function() {
-			soundWidget.play();
+			if ( ! disableAutoPlay) soundWidget.play();
 			if (callback) callback();
 		}
 	});
@@ -300,7 +300,7 @@ var playAudioAndVideo = function() {
 	if (mythAudio && mythVideo && player && player.loadVideoById) {
 		player.loadVideoById(mythVideo);
 		soundWidget.bind(SC.Widget.Events.READY, function() {
-			playSound(mythAudio, false, function() {
+			playSound(mythAudio, false, false, function() {
 				/* if ( ! mythTextTypeStarted) {
 					mythTextTypeStarted = true;
 					setTimeout(function() {
@@ -645,6 +645,29 @@ window.addEventListener('hashchange', function() {
 		}
 	}
 	else {
+		$map360Btn.style.display = 'none';
+		$archPhotosBtn.style.display = 'none';
+		$placesPowerBtn.style.display = 'none';
+		$testBtn.style.display = 'none';
+		$statsBtn.style.display = 'none';
+		$donateBtn.style.display = 'none';
+		$authorsBtn.style.display = 'none';
+		$aboutBtn.style.display = 'none';
+		$musicOffBtn.style.display = 'none';
+		$musicOnBtn.style.display = 'none';
+		$fullscreenInBtn.style.display = 'none';
+		$mapMythsMenuBtn.style.display = 'none';
+		$map.style.display = 'none';
+		$videoLayerBlock.style.display = 'block';
+		$addMenu.style.display = 'block';
+		$logo.style.display = 'block';
+		$logo.style.width = '100%';
+		$logo.style.left = 'initial';
+		$start.style.display = 'block';
+		playSound('499293150%3Fsecret_token%3Ds-caK9h', true, true);
+		loaded = false;
+		if (player) player.loadVideoById('YG25qmmSEHg');
+		map.setZoom(16);
 	}
 });
 
