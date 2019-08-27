@@ -42,26 +42,20 @@ var loadVideoById;
 var onYouTubeIframeAPIReady = function() {
 	player = new YT.Player($video, {
 		events: {
-			onReady: function(event) {
-				if (loadVideoById) player.loadVideoById(loadVideoById);
-				//event.target.setPlaybackQuality('hd1080');
-				event.target.playVideo();
-			},
 			onStateChange: function(event) {
 				$loading.style.display = 'none';
+				if (event.data == YT.PlayerState.BUFFERING) {
+					$video.style.display = 'block';
+				}
 				if (event.data == YT.PlayerState.PLAYING) {
 					if (event.target.getVideoData().video_id == 'YG25qmmSEHg') introVideo = true; else introVideo = false;
-					if ( ! loaded && introVideo) {
-						loaded = true;
-						player.pauseVideo();
-					}
-					else $video.style.display = 'block';
 				}
 				if (event.data == YT.PlayerState.CUED) {
 					$video.style.display = 'none';
 				}
 				if (event.data == YT.PlayerState.ENDED) {
 					if (introVideo) {
+						loaded = true;
 						window.location.hash = '!myths';
 						setTimeout(function() {
 							//map.setZoom(12);
@@ -97,10 +91,12 @@ var loader = new Vivus('start', {
 		});
 		var $loader = document.getElementById('loader');
 		$loader.addEventListener('click', function() {
-			$loading.style.display = 'block';
+			if ( ! loaded) $loading.style.display = 'block';
 			//loader.reset().play();
 			$start.style.display = 'none';
-			if (loaded) player.playVideo(); else loaded = true;
+			setTimeout(function() {
+				player.playVideo();
+			}, 1000);
 			setFullScreen();
 			$mythPage.style.display = 'none';
 			//$sound.style.display = 'none';
@@ -168,9 +164,9 @@ var initMap = function() {
 		});
 		map.data.loadGeoJson('geo.json?201811031800', null, function(geoObjects) {
 			geoObjects.forEach(function(element) {
-				if (currentObject.type == element.l.type && currentObject.name == element.l.name) {
-					mythAudio = element.l.audio[currentLang];
-					mythVideo = element.l.video;
+				if (currentObject.type == element.getProperty('type') && currentObject.name == element.getProperty('name')) {
+					mythAudio = element.getProperty('audio')[currentLang];
+					mythVideo = element.getProperty('video');
 				}
 			});
 		});
@@ -665,9 +661,8 @@ window.addEventListener('hashchange', function() {
 		$logo.style.left = 'initial';
 		$start.style.display = 'block';
 		playSound('499293150%3Fsecret_token%3Ds-caK9h', true, true);
-		loaded = false;
 		if (player) player.loadVideoById('YG25qmmSEHg');
-		map.setZoom(16);
+		if (map) map.setZoom(16);
 	}
 });
 
@@ -689,7 +684,7 @@ Array.from(document.getElementsByClassName('team-profile')).forEach(function(ele
 });
 
 var langList = [
-	{lang: 'ru', name: 'Русский'}, 
+	{lang: 'ru', name: 'Русский'},
 	{lang: 'pl', name: 'Polski'}
 ];
 
