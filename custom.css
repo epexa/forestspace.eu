@@ -116,7 +116,7 @@ svg * {
 	z-index: 1;
 	display: none;
 	/* hack for 1080 https://stackoverflow.com/a/49797759 */
-	width: 200%; 
+	width: 200%;
 	height: 200%;
 	-moz-transform: scale(0.5);
 	-ms-transform: scale(0.5);
@@ -229,36 +229,37 @@ a[href^="https://maps.google.com/maps"]{display:none!important}.gmnoprint a,.gmn
 	padding-left: 1rem;
 }
 #team .team-description p {
-	font-size: 1.5rem;	
+	font-size: 1.5rem;
 }
-#team .team-links {
+#team .team-links, #modal-mobile-app .team-links {
 	display: block;
 	float: left;
 }
-#team .team-links ul {
+#team .team-links ul, #modal-mobile-app .team-links ul {
 	float: left;
 	list-style: none;
 	padding: 0;
 	margin: 0;
 }
-#team .team-links ul li {
+#team .team-links ul li, #modal-mobile-app .team-links ul li {
 	float: left;
 	font-size: 2rem;
 	margin: 0 0.5rem;
 }
-#team .team-links ul li a {
-	text-decoration: none;	
+#team .team-links ul li a, #modal-mobile-app .team-links ul li a {
+	text-decoration: none;
 }
 
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?sj5s2p');
-  src:  url('fonts/icomoon.eot?sj5s2p#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?sj5s2p') format('truetype'),
-    url('fonts/icomoon.woff?sj5s2p') format('woff'),
-    url('fonts/icomoon.svg?sj5s2p#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?lokv73');
+  src:  url('fonts/icomoon.eot?lokv73#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?lokv73') format('truetype'),
+    url('fonts/icomoon.woff?lokv73') format('woff'),
+    url('fonts/icomoon.svg?lokv73#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
+  font-display: block;
 }
 
 [class^="icon-"], [class*=" icon-"] {
@@ -276,35 +277,38 @@ a[href^="https://maps.google.com/maps"]{display:none!important}.gmnoprint a,.gmn
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-vk:before {
-  content: "\e909";
-}
-.icon-facebook:before {
-  content: "\e900";
-}
-.icon-instagram:before {
-  content: "\e901";
-}
-.icon-linkedin:before {
-  content: "\e902";
-}
-.icon-github:before {
-  content: "\e903";
-}
-.icon-globe:before {
-  content: "\e904";
-}
-.icon-volume-mute:before {
-  content: "\e905";
-}
-.icon-volume-high:before {
-  content: "\e906";
+.icon-enlarge:before {
+  content: "\e989";
 }
 .icon-shrink:before {
-  content: "\e907";
+  content: "\e98a";
 }
-.icon-enlarge:before {
-  content: "\e908";
+.icon-globe:before {
+  content: "\e9ca";
+}
+.icon-volume-high:before {
+  content: "\ea26";
+}
+.icon-volume-mute:before {
+  content: "\ea2a";
+}
+.icon-facebook:before {
+  content: "\ea90";
+}
+.icon-instagram:before {
+  content: "\ea92";
+}
+.icon-twitter:before {
+  content: "\ea96";
+}
+.icon-vk:before {
+  content: "\ea98";
+}
+.icon-github:before {
+  content: "\eab0";
+}
+.icon-linkedin:before {
+  content: "\eac9";
 }
 
 @keyframes lds-spinner {
@@ -466,7 +470,7 @@ a[href^="https://maps.google.com/maps"]{display:none!important}.gmnoprint a,.gmn
 	cursor: pointer;
     height: 2rem;
     width: 3rem;
-    margin: 0 0.5rem;	
+    margin: 0 0.5rem;
 }
 
 #stats {
@@ -513,7 +517,7 @@ a[href^="https://maps.google.com/maps"]{display:none!important}.gmnoprint a,.gmn
 	display: none;
 }
 #photo img {
-	width: 100%;	
+	width: 100%;
 }
 #photo h2 {
 	text-align: center;
@@ -545,7 +549,7 @@ a[href^="https://maps.google.com/maps"]{display:none!important}.gmnoprint a,.gmn
 	width: 181px;
 }
 #donate .sponsor-profile p {
-	font-size: 1.5rem;	
+	font-size: 1.5rem;
 }
 #donate #sponsors ul {
 	/* list-style: none; */
@@ -558,7 +562,7 @@ a[href^="https://maps.google.com/maps"]{display:none!important}.gmnoprint a,.gmn
 	margin: 0 0.5rem;
 }
 #donate #sponsors ul li a {
-	text-decoration: none;	
+	text-decoration: none;
 }
 
 .btn-circle {
@@ -571,7 +575,7 @@ a[href^="https://maps.google.com/maps"]{display:none!important}.gmnoprint a,.gmn
 	margin-top: 15%;
 }
 
-#want-tshirt, #want-poster {	
+#want-tshirt, #want-poster {
 	transition: 1s;
 }
 #want-tshirt {
